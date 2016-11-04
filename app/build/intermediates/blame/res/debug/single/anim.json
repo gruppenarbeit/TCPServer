@@ -12,12 +12,12 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/anim/abc_fade_out.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/anim/fab_in.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/anim/fab_in.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/anim/fab_in.xml",
+        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/anim/fab_in.xml"
     },
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/anim/fab_out.xml",

@@ -260,12 +260,12 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/drawable-mdpi/abc_btn_rating_star_off_mtrl_alpha.png"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_tab_indicator_mtrl_alpha.9.png",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/drawable-mdpi/abc_tab_indicator_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/drawable-mdpi/common_plus_signin_btn_text_dark_focused.9.png",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/res/drawable-mdpi/common_plus_signin_btn_text_dark_focused.9.png"
+    },
+    {
+        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/drawable-mdpi/abc_tab_indicator_mtrl_alpha.9.png",
+        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/drawable-mdpi/abc_tab_indicator_mtrl_alpha.9.png"
     },
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/drawable-mdpi/common_google_signin_btn_icon_dark_pressed.9.png",

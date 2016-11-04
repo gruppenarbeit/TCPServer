@@ -8,33 +8,27 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class WifiDataBuffer {
 
-    LinkedBlockingQueue<WifiPackage> ToESP;
-    LinkedBlockingQueue<WifiPackage> FromESP;
+    LinkedBlockingQueue<byte[]> ToESP; // DataType "WifiPackage" is a seperate class in this package.
+    LinkedBlockingQueue<byte[]> FromESP;
 
     public WifiDataBuffer()  {
-        ToESP = new LinkedBlockingQueue<>(10);
-        FromESP = new LinkedBlockingQueue<>(500);
+        ToESP = new LinkedBlockingQueue<>(10); // Max Size = 10
+        FromESP = new LinkedBlockingQueue<>(100); // Max 100 unprocessed Packages at same time allowed
     }
 
-    public boolean enqueue_ToESP(WifiPackage Pack) {
-        if (Pack.getRowData().length  == 0){ // Do not enqueue empty Strings
-            return true;
-        }
-        return ToESP.add(Pack);
+    public boolean enqueue_ToESP(byte[] packet) {
+        return ToESP.add(packet);
     }
 
-    public WifiPackage dequeue_ToESP(){
+    public byte[] dequeue_ToESP(){
         return ToESP.poll();
     }
 
-    public boolean enque_FromESP(WifiPackage Pack) {
-        if (Pack.getRowData().length  == 0){ // Do not enqueue empty Strings
-            return true;
-        }
-        return FromESP.add(Pack);
+    public boolean enque_FromESP(byte[] packet) {
+        return FromESP.add(packet);
     }
 
-    public WifiPackage deque_FromESP() {
+    public byte[] deque_FromESP() {
         return FromESP.poll();
     }
 

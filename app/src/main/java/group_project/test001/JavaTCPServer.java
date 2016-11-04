@@ -75,7 +75,7 @@ public class JavaTCPServer {
                     try {
 
                         if (wifiDataBuffer.isDataWaiting_ToESP()){ // Send first to react faster on userinput
-                            outputStream.write(wifiDataBuffer.dequeue_ToESP().getRowData());
+                            outputStream.write(wifiDataBuffer.dequeue_ToESP());
                         }
 
 
@@ -116,56 +116,15 @@ public class JavaTCPServer {
                             final ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(PackSize);
                             inStreamBuffer.write(header);
 
-                            // TODO: CALD-Pack is to big to be read in one go :(
-                            // Workaround: read CALD-Pack in smaler Pieces
-//                            while (PackSize > 2048) {
-//                                PackSize -= 2048;
-//                                // TODO: enqueue in pieces but as a whole.
-//                                //outputStream.write(IOUtils.toByteArray(inputStream, 2048));
-//                                inStreamBuffer.write(IOUtils.toByteArray(inputStream, 2048));
-//                                // TODO: This is only for debugging
-////                                mainActivity.runOnUiThread(new Runnable() {
-////                                    @Override
-////                                    public void run() {
-////                                        mainActivity.update_Sockettext();
-////                                    }
-////                                });
-//                            }
-//
-//                            if(PackSize < 4) { // if < 4 there will not be a footer 'PEND'
-//                                throw new IOException("Packsize is: " + PackSize);
-//                            }
+
                             byte[] content = IOUtils.toByteArray(inputStream, PackSize - 8);
                             String ContentString = new String(content); // Check if Postfix = "PEND"
                             if(!ContentString.endsWith("PEND")){
                                 throw new IllegalArgumentException("Packge doesnt end with PEND, but is: " + ContentString);
                             }
-                            inStreamBuffer.write(content);
+                            inStreamBuffer.write(content); // now inStreamBuffer contains Header AND content
 
-//                            // Case inStreamBuffer is the callipack.
-//                            if (headerAndDetails.endsWith("CALD")) {
-//                                // not possible to pass it to mainactivity :(
-//                                // Callipack is to large
-//                                Callipack = inStreamBuffer.toByteArray();
-//                                Callipack_Ready = true; // set Callipack as attribute of class JavaTCPServer
-//
-//                                // Attempt to pass Callipack via wifiDataBufffer or as below fails.
-//                                mainActivity.runOnUiThread(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//                                        // fails: mainActivity.set_Sockettext(Callipack);
-//                                        // fails: wifiDataBuffer.enqueue_FromESP(new WifiPackage(Callipack))
-//                                        // okey:  mainActivity.set_Sockettext({Callipack[1], Callipack[2]});
-//
-//                                        byte[] bla = "Received Callipack".getBytes();
-//                                        mainActivity.set_Sockettext(Callipack);
-//                                    }
-//                                });
-//                            }
-//                            else { // Case inStreamBuffer does not contain a callipack
-//
-//                            }
-                            wifiDataBuffer.enque_FromESP(new WifiPackage(inStreamBuffer.toByteArray())); // enqueue
+                            wifiDataBuffer.enque_FromESP(inStreamBuffer.toByteArray()); // enqueue
 
 
                             // TODO: This is only for debugging

@@ -34,8 +34,20 @@ public class MainActivity extends AppCompatActivity {
     // Dequeues an element from wifiDataBuffer and puts it on a TextView
     public void update_Sockettext() { // TODO: Dequeueing elements schould be done by Matthias Thread
         if(wifiDataBuffer.isDataWaiting_FromESP()){
-            String str = "Messages received:\n"+wifiDataBuffer.deque_FromESP().toString();
-            SocketText.setText(str);
+            byte[] rowData = wifiDataBuffer.deque_FromESP();
+            int maxleng = rowData.length;
+            String str = "Messages received:\n";
+            if(maxleng > 200) {
+                maxleng = 200;
+            }
+
+            String messageType = "\nWifiPackage.toString: ";
+            for (int i = 0; i < maxleng; i++) {
+                messageType += ( rowData[i] & 0xFF)  + "#";
+            }
+            messageType += ",\n";
+
+            SocketText.setText(str + messageType);
         }
         else {
             SocketText.setText("Queue empty");
@@ -64,27 +76,27 @@ public class MainActivity extends AppCompatActivity {
     // For sending Commands to the ESP.
     private void SendScanTrigger() { // TODO: This schould be done by Matthias Thread
         byte[] ScanTriggerPack = {82, 68,   49,   54,   83,   67,   65,   78,   0,   8,   1,   5,   0,   80,   50,   50,   50,   50,   50,   50,   50,    50,   50,  50,   50,   50,   50,   50,   80,   69,   78,   68};
-        wifiDataBuffer.enqueue_ToESP(new WifiPackage(ScanTriggerPack));
+        wifiDataBuffer.enqueue_ToESP(ScanTriggerPack);
     }
 
     private void SendLiveTrigger () {
         byte[] LiveTriggerPack = {82,   68,   49,   54,   84,   73,   77,   69,    0,    8,    1,    5,    0,    0,    7,   65,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
-        wifiDataBuffer.enqueue_ToESP(new WifiPackage(LiveTriggerPack));
+        wifiDataBuffer.enqueue_ToESP(LiveTriggerPack);
     }
 
     private  void SendLiveStop () {
         byte[] LiveStopPack = {82,   68,   49,   54,   84,   73,   77,   69,    0,    8,    1,    5,    0,    0,    7,   0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
-        wifiDataBuffer.enqueue_ToESP(new WifiPackage(LiveStopPack));
+        wifiDataBuffer.enqueue_ToESP(LiveStopPack);
     }
 
     private void SendCaliTrigger () {
         byte[] calitrigger = {82, 68, 49, 54, 67, 65, 76, 68, 0, 8, 1, 5, 0,  0, 0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,     0,    0,     0,    80,   69,   78,   68};
-        wifiDataBuffer.enqueue_ToESP(new WifiPackage(calitrigger));
+        wifiDataBuffer.enqueue_ToESP(calitrigger);
     }
 
     private void SendDETVTrigger () {
         byte[] DETVTrigger = {82, 68, 49, 54, 68, 69, 84, 86, 0, 8, 1, 5, 0,  4, 0,     2,     0,     20,     0,     60,     0,     100,     0,     0,     0,     0,    80,     0,    80,   69,   78,   68};
-        wifiDataBuffer.enqueue_ToESP(new WifiPackage(DETVTrigger));
+        wifiDataBuffer.enqueue_ToESP(DETVTrigger);
     }
 
 
