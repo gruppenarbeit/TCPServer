@@ -13,13 +13,11 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
 import java.lang.reflect.Method;
 
-public class MainActivity extends AppCompatActivity {
+public class AttenuatorMainActivity extends AppCompatActivity {
 
-    GoogleApiClient client;
+    //GoogleApiClient client;
     Button Update_Connection;
     Button sendScan;
     Button SendLive;
@@ -27,9 +25,10 @@ public class MainActivity extends AppCompatActivity {
     Button SendCali;
     Button SendDETV;
     TextView SocketText;
+
     WifiManager wifi_manager;
-    JavaTCPServer Socket;
-    WifiDataBuffer wifiDataBuffer; // Via WifiDataBufffer messages are being passed between Threads to JavaTCPServer to ESP
+    TCPServer Socket;
+    WifiDataBuffer wifiDataBuffer; // Via WifiDataBufffer messages are being passed between Threads to TCPServer to ESP
 
     // Dequeues an element from wifiDataBuffer and puts it on a TextView
     public void update_Sockettext() { // TODO: Dequeueing elements schould be done by Matthias Thread
@@ -54,24 +53,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-//    public void set_Sockettext( byte[]  callipack) {
-//        String messageType = "\nByte[] Callipack: ";
-//        if(callipack.length <= 200){
-//            for (byte b: callipack) {
-//                messageType += ( b & 0xFF)  + "#";
-//            }
-//            messageType += ",\n";
-//            SocketText.setText(messageType);
-//        }
-//        else {
-//            for (int i = 0; i < 100; i++) {
-//                messageType += ( callipack[i] & 0xFF)  + "#";
-//            }
-//            messageType += ",\n";
-//            SocketText.setText(messageType);
-//        }
-//
-//    }
 
     // For sending Commands to the ESP.
     private void SendScanTrigger() { // TODO: This schould be done by Matthias Thread
@@ -80,8 +61,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void SendLiveTrigger () {
-        byte[] LiveTriggerPack = {82,   68,   49,   54,   84,   73,   77,   69,    0,    8,    1,    5,    0,    0,    7,   65,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
-        wifiDataBuffer.enqueue_ToESP(LiveTriggerPack);
+       // byte[] LiveTriggerPack = {82,   68,   49,   54,   84,   73,   77,   69,    0,    8,    1,    5,    0,    0,    7,   65,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
+        byte[] LiveTriggerPack = {82,   68,   49,   54,   84};
+                wifiDataBuffer.enqueue_ToESP(LiveTriggerPack);
+        byte[] LiveTriggerPack2 = {73,   77,   69,    0,    8,    1,    5,    0,    0,    7,   65,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
+        wifiDataBuffer.enqueue_ToESP(LiveTriggerPack2);
     }
 
     private  void SendLiveStop () {
@@ -114,14 +98,15 @@ public class MainActivity extends AppCompatActivity {
         StopLive = (Button) findViewById(R.id.stop_live);
         SendCali = (Button) findViewById(R.id.send_calitrigger);
         SendDETV = (Button) findViewById(R.id.send_detail);
+        SocketText = (TextView) findViewById(R.id.Sockettext);
 
-        wifi_manager = (WifiManager) this.getSystemService(MainActivity.this.WIFI_SERVICE);
+        wifi_manager = (WifiManager) this.getSystemService(AttenuatorMainActivity.this.WIFI_SERVICE);
         WifiConfiguration wifi_configuration = null;
         wifi_manager.setWifiEnabled(false);
         try
         {
             // Source http://stackoverflow.com/questions/13946607/android-how-to-turn-on-hotspot-in-android-programmatically
-            Method method=wifi_manager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
+            Method method= wifi_manager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
             method.invoke(wifi_manager, wifi_configuration, true);
         }
         catch (Exception e)
@@ -129,13 +114,10 @@ public class MainActivity extends AppCompatActivity {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-//        apManager = new ApManager();
-        // Set Wifi in AP-Mode on Startup:
-  //      ApManager.turnHotspotOn(MainActivity.this);
+
 
         wifiDataBuffer = new WifiDataBuffer();
-        Socket = new JavaTCPServer(wifiDataBuffer, this); // Initialise JavaTCPServer as well
-        SocketText = (TextView) findViewById(R.id.Sockettext);
+        Socket = new TCPServer(wifiDataBuffer); // Initialise TCPServer as well
 
         // Update should be made by seperate thread
         Update_Connection.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
 
@@ -217,39 +199,11 @@ public class MainActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://group_project.test001/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
     public void onStop() {
         super.onStop();
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "Main Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app URL is correct.
-                Uri.parse("android-app://group_project.test001/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
     }
 }

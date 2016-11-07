@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:screenOrientation="portrait"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="group_project.test001.MainActivity"
+    tools:context="group_project.test001.AttenuatorMainActivity"
     tools:showIn="@layout/activity_main"><![CDATA[
 
 
