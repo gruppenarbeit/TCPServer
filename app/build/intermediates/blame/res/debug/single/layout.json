@@ -48,10 +48,6 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/notification_template_big_media.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/layout_snackbar_include.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/layout/layout_snackbar_include.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/notification_template_part_chronometer.xml"
     },
@@ -68,20 +64,16 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/layout_tab_text.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/layout/layout_tab_text.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/content_main.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/src/main/res/layout/content_main.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_navigation_item_subheader.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
+        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_navigation_item_subheader.xml"
     },
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
@@ -96,10 +88,6 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_layout_snackbar.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/layout_tab_icon.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/layout/layout_tab_icon.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/support_simple_spinner_dropdown_item.xml"
     },
@@ -108,12 +96,12 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_screen_simple.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_list_menu_item_layout.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_layout_tab_text.xml"
+    },
+    {
+        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
+        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_list_menu_item_layout.xml"
     },
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
@@ -168,16 +156,12 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/res/layout/design_menu_item_action_area.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_action_menu_item_layout.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_simple_dropdown_hint.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.1/res/layout/abc_simple_dropdown_hint.xml"
+        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
+        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_action_menu_item_layout.xml"
     },
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
@@ -218,10 +202,6 @@
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_activity_chooser_view_list_item.xml"
-    },
-    {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/layout_snackbar.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/exploded-aar/com.android.support/design/22.2.1/res/layout/layout_snackbar.xml"
     },
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
