@@ -1,0 +1,279 @@
+<changelist name="Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_" date="1479040037572" recycled="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/13/16 1:27 PM [Default]" />
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/classes.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$integer.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$integer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$integer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$styleable.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$styleable.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$styleable.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$styleable.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$styleable.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$styleable.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/android/support/v7/appcompat/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/android/support/v7/appcompat/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$mipmap.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$mipmap.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$mipmap.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$style.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$style.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$style.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$layout.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$layout.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$layout.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/res/resources-debug.ap_" />
+    <option name="AFTER_PATH" value="app/build/intermediates/res/resources-debug.ap_" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/resources-debug.ap_" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$string.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$string.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$string.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/android/support/design/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/android/support/design/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$menu.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$menu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$menu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$layout.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$layout.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$layout.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$integer.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$integer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$integer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental/packageInstantRunResourcesDebug/zip-cache/ps9Uym1fjkUiL7wscjfufSs1pFI=" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental/packageInstantRunResourcesDebug/zip-cache/ps9Uym1fjkUiL7wscjfufSs1pFI=" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/ps9Uym1fjkUiL7wscjfufSs1pFI=" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$menu.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$menu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$menu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/android/support/design/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/android/support/design/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$styleable.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$styleable.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$styleable.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$integer.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$integer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$integer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$layout.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$layout.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$layout.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/instant-run.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/instant-run-bootstrap.jar" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_7/android/support/design/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_7/android/support/design/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/android/support/v7/appcompat/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_4/android/support/v7/appcompat/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$string.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$string.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$string.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$styleable.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$styleable.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$styleable.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/v7/appcompat/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$menu.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$menu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$menu.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
+    <option name="AFTER_PATH" value="app/build/intermediates/instant-run-resources/resources-debug.ir.ap_" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/resources-debug.ir.ap_" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$mipmap.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$mipmap.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$mipmap.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$layout.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$layout.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$layout.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/instant-run-support/debug/instant-run.zip" />
+    <option name="AFTER_PATH" value="app/build/intermediates/instant-run-support/debug/instant-run.zip" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/instant-run.zip" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental/packageDebug/zip-cache/ps9Uym1fjkUiL7wscjfufSs1pFI=" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental/packageDebug/zip-cache/ps9Uym1fjkUiL7wscjfufSs1pFI=" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/ps9Uym1fjkUiL7wscjfufSs1pFI=" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$style.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$style.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$style.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/android/support/design/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$mipmap.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$mipmap.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$mipmap.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$integer.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$integer.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$integer.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$id.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$id.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$id.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$style.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$style.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$style.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/classes.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$style.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$style.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$style.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/classes.dex" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/outputs/apk/app-debug.apk" />
+    <option name="AFTER_PATH" value="app/build/outputs/apk/app-debug.apk" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/app-debug.apk" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$string.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/classes/debug/group_project/test001/R$string.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$string.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$string.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/incremental-verifier/debug/group_project/test001/R$string.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$string.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$mipmap.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRunSlicer/debug/folders/1/5/slice_6/group_project/test001/R$mipmap.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$mipmap.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$menu.class" />
+    <option name="AFTER_PATH" value="app/build/intermediates/transforms/instantRun/debug/folders/1/5/main/group_project/test001/R$menu.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_13_16_1_27_PM__Default_/R$menu.class" />
+  </binary>
+</changelist>

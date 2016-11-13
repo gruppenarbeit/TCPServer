@@ -38,18 +38,9 @@
         android:id="@+id/Sockettext"
         tools:text="Socket"
         android:layout_marginTop="26dp"
-        android:layout_below="@+id/Update_Connection"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_height="250dp" />
-
-    <Button
-        android:text="DetStop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/stop_detail"
-        android:layout_alignBottom="@+id/stop_live"
-        android:layout_alignStart="@+id/send_detail"
-        android:layout_marginBottom="14dp" />
 
     <Button
         android:text="Scan"
@@ -62,16 +53,6 @@
         android:layout_alignParentStart="true" />
 
     <Button
-        android:text="Detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/send_detail"
-        android:layout_alignBaseline="@+id/send_Scan"
-        android:layout_alignBottom="@+id/send_Scan"
-        android:background="@color/accent_material_light"
-        android:layout_centerHorizontal="true" />
-
-    <Button
         android:text="Live"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,26 +60,6 @@
         android:background="@color/accent_material_light"
         android:layout_alignBaseline="@+id/send_detail"
         android:layout_alignBottom="@+id/send_detail"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="LiveStop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/stop_live"
-        android:background="@color/accent_material_light"
-        android:layout_marginTop="13dp"
-        android:layout_below="@+id/send_live"
-        android:layout_alignStart="@+id/Update_Connection"
-        android:layout_marginStart="10dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Update List"
-        android:id="@+id/Update_Connection"
-        android:layout_alignParentTop="true"
-        android:background="@color/accent_material_light"
         android:layout_alignParentEnd="true" />
 
     <Button
@@ -110,6 +71,37 @@
         android:layout_alignBaseline="@+id/stop_live"
         android:layout_alignBottom="@+id/stop_live"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="LiveStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stop_live"
+        android:background="@color/accent_material_light"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/send_live"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/send_detail"
+        android:background="@color/accent_material_light"
+        android:layout_alignBaseline="@+id/send_Scan"
+        android:layout_alignBottom="@+id/send_Scan"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="DetStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/stop_detail"
+        android:layout_alignBaseline="@+id/send_calitrigger"
+        android:layout_alignBottom="@+id/send_calitrigger"
+        android:layout_alignLeft="@+id/send_detail"
+        android:layout_alignStart="@+id/send_detail" />
 
 
 </RelativeLayout>
