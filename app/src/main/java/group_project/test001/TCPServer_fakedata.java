@@ -23,21 +23,31 @@ public class TCPServer_fakedata {
     private Socket socket;
     OutputStream outputStream;
     InputStream inputStream;
-    byte[] device_id = {0, 0, 0, 125};
+    final byte[] RD16 = "RD16".getBytes();
+    final byte[] PEND = "PEND".getBytes();
+    final byte[] TIME = "TIME".getBytes();
+    final byte[] DRDY = "DRDY".getBytes();
+    final byte[] DETV = "DETV".getBytes();
+    final byte[] CALD = "CALD".getBytes();
+
+    final byte[] device_id = {0, 0, 0, 125};
     byte[] battery_charge = {90}; // Prozent
     byte[] battery_voltage = {0, 10}; // = 10mV
     byte[] sequence_number = {77, 77, 77, 77}; // TODO: Make dynamic
     byte[] RTC = {0, 0, 0, 0, 0, 0};
-    byte[] anzahl_tabellen= {8};
-    byte[] freqs_N = {0, 100};
-    byte[] levels_M = {0 ,16};
-    STATE state;
-    public enum STATE {Start, Stop}
+    final byte[] anzahl_tabellen= {8};
+    final byte[] freqs_N = {0, 100};
+    final byte[] levels_M = {0 ,16};
+    byte[] current_Pack = null;
+    byte[] frequencies = reserviert(2, 0);
+    byte[] LNA = {0};
+
+    public enum STATE {Start, Waiting, Time, Scan, Detv, Callibrate, Stop}
 
     public TCPServer_fakedata(final WifiDataBuffer wifiDataBuffer) throws IllegalStateException {
         Log.d("TCPServer","Constructor of TCPServer called");
         this.wifiDataBuffer = wifiDataBuffer;
-        state = STATE.Start;
+
 
         Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
             public void uncaughtException(Thread th, Throwable ex) {
@@ -63,109 +73,166 @@ public class TCPServer_fakedata {
                 while (!Thread.currentThread().isInterrupted()) {
                     //connect to ESP - serversocket.accept....
 
-
                     while (!Thread.currentThread().isInterrupted() ) {
 
+                        for(STATE state = STATE.Start; state != STATE.Stop; state = getNextState(state)) {
 
-                        // TODO: Check if ESP still connected to Socket
+                            Log.d("TCPServer", "Current State = "+ state.toString());
 
-                        // try {
-                            /* // this code would check very many times if socket is still reachable
-                           if(!socket.getInetAddress().isReachable(100)){
-                                throw new IllegalStateException("ESP not in reach");
-                            }*/
+                            ByteArrayOutputStream DataFromESP = new ByteArrayOutputStream();
 
-                        if (wifiDataBuffer.isDataWaiting_ToESP()) { // send Trigger-Pack if one is available
-                            //
-                            byte[] received_from_Remo = wifiDataBuffer.dequeue_ToESP();
-                            byte[] received_from_ESP = fake_packet(received_from_Remo);
-                            check(received_from_ESP); // RD16, length, PEND
-                            wifiDataBuffer.enque_FromESP(received_from_ESP);
-                        }
-
-
-
-
-
- /*                          if (inputStream.available() >= 8)
-                           { // true if receiving Data.
-                                int PackSize; // to be determined by HeaderDetails
-
-                                // IOUtils needs to be imported first
-                                // Source: http://stackoverflow.com/questions/24578243/cannot-resolve-symbol-ioutils
-                                // 1. File -> Project Structure... -> Dependencies
-                                // 2. Click '+' in the upper right corner and select "Library dependency"
-                                // 3. In the search field type: "org.apache.commons.io" and click Search
-                                // 4. Select "org.apache.directory.studio:org.apache.commons.io:
-                                byte[] header = IOUtils.toByteArray(inputStream, 8);
-                                String headerAndDetails = new String(header);
-                                if(!headerAndDetails.startsWith("RD16")){
-                                    throw new IllegalArgumentException("Header is not RD16 but: " + headerAndDetails);
+                            try {
+                                switch (state) {
+                                    case Start:
+                                        sleep(2000); // 7 sec to turn on measurement device is fast
+                                        DataFromESP.write(RD16);
+                                        DataFromESP.write(DRDY);
+                                        DataFromESP.write(device_id);
+                                        DataFromESP.write(LNA);
+                                        DataFromESP.write(reserviert(12, 0));
+                                        DataFromESP.write(battery_charge);
+                                        DataFromESP.write(battery_voltage);
+                                        DataFromESP.write(PEND);
+                                        send(DataFromESP.toByteArray());
+                                        break;
+                                    case Waiting:
+                                        try {
+                                            sleep(500);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                        break;
+                                    case Time:
+                                        Log.d("TCPServer", "State Time not yet implemented :(");
+                                        break;
+                                    case Scan:
+                                        Log.d("TCPServer", "State Scan not yet implemented :(");
+                                        break;
+                                    case Callibrate:
+                                        DataFromESP.write(RD16);
+                                        DataFromESP.write(CALD);
+                                        DataFromESP.write(device_id);
+                                        DataFromESP.write(device_name());
+                                        DataFromESP.write(RTC);
+                                        DataFromESP.write(LNA);
+                                        DataFromESP.write(anzahl_tabellen);
+                                        DataFromESP.write(freqs_N);
+                                        DataFromESP.write(levels_M);
+                                        DataFromESP.write(Kalibrationstabelle());
+                                        DataFromESP.write(battery_charge);
+                                        DataFromESP.write(battery_voltage);
+                                        DataFromESP.write("PEND".getBytes());
+                                        send(DataFromESP.toByteArray());
+                                        Log.d("TCPServer", "State Callibrate not yet implemented :(");
+                                        current_Pack = null;
+                                        break;
+                                    case Detv:
+                                        Log.d("TCPServer", "State Detv not yet implemented :(");
+                                        break;
+                                    default:
+                                        throw new IllegalStateException("Unknown State is" + state.toString());
                                 }
-                                if (headerAndDetails.endsWith("DRDY")) {
-                                    PackSize = 32;
-                                }
-                                else if (headerAndDetails.endsWith("CALD")) {
-                                    PackSize = 53423;
-                                }
-                                else if (headerAndDetails.endsWith("SCAN")) {
-                                    PackSize = 56;
-                                }
-                                else if (headerAndDetails.endsWith("DETV")) {
-                                    PackSize = 56;
-                                }
-                                else if (headerAndDetails.endsWith("TIME")) {
-                                    PackSize = 95;
-                                }
-                                else {
-                                    throw new IllegalArgumentException("Detailheader is: " + headerAndDetails);
-                                }
-
-                                final ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(PackSize);
-                                inStreamBuffer.write(header); // make a temporary Buffer to store whole incomming Package untill fully received
-
-
-                                byte[] content = IOUtils.toByteArray(inputStream, PackSize - 8); // read content of Package to corresponing header.
-                                String ContentString = new String(content); // Check if Postfix = "PEND"
-                                if(!ContentString.endsWith("PEND")){
-                                    throw new IllegalStateException("Packge doesnt end with PEND, but is: " + ContentString);
-                                }
-                                inStreamBuffer.write(content); // now inStreamBuffer contains Header AND content
-                                wifiDataBuffer.enque_FromESP(inStreamBuffer.toByteArray()); // enqueue received Data into WifiDataBuffer
+                            } catch (IOException e){
+                                e.printStackTrace();
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
 
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-*/
-                        // Make 100ms break if queue TO_ESP empty and no date available to receive
-                        try {
-                            if (!(inputStream.available() > 8) && !wifiDataBuffer.isDataWaiting_ToESP()) {
-                                try {
-                                    serverThread.sleep(100);
-                                } catch (InterruptedException e) {
-                                    e.printStackTrace();
-                                }
+                            try {
+                                sleep(50);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
 
-                        try {
-                            socket.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                            if (wifiDataBuffer.isDataWaiting_ToESP()) { // send Trigger-Pack if one is available
+                                byte[] received_from_Remo = wifiDataBuffer.dequeue_ToESP();
+                                byte[] HeaderofTrigger = {received_from_Remo[4], received_from_Remo[5], received_from_Remo[6], received_from_Remo[7]};
+                                Log.d("TCPServer","TCPServer_fake did receive a TriggerPackage of Type '"+ new String(HeaderofTrigger) +"' from Android");
+                                current_Pack = received_from_Remo;
+                            }
                         }
-
                     }
-
                 }
             }
-
         };
         t.setUncaughtExceptionHandler(h);
         t.start();
     }
+
+    private void send(byte[] DataPack) {
+        checkForCorrectness(DataPack); // RD16, length, PEND
+        byte[] HeaderofData = {DataPack[4], DataPack[5], DataPack[6], DataPack[7]};
+        Log.d("TCPServer","TCPServer_fake did send a DataPackage of Type '"+ new String(HeaderofData) +"' to Android");
+        wifiDataBuffer.enque_FromESP(DataPack);
+    }
+
+    private STATE getNextState(STATE old_state) {
+        STATE new_state;
+        switch (old_state) {
+            case Start:
+                new_state = STATE.Waiting;
+                break;
+            default:
+                if(current_Pack != null) {
+                    byte[] header = split_packet(4, 7, current_Pack);
+                    switch (new String(header)) {
+                        case "CALD":
+                            new_state = STATE.Callibrate;
+                            break;
+                        case "TIME":
+                            new_state = STATE.Time;
+                            frequencies = split_packet(13, 14, current_Pack);
+                            break;
+                        case "DETV":
+                            new_state = STATE.Detv;
+                            frequencies = split_packet(14, 13+2*current_Pack[13], current_Pack);
+                            break;
+                        case "SCAN":
+                            if(old_state == STATE.Scan) {
+                                int currentscanfreq = byteArray2int(frequencies);
+                                if (currentscanfreq >= 10000) {
+                                    new_state =  STATE.Waiting;
+                                } else {
+                                    frequencies = int2byteArray(currentscanfreq + 100, 2);
+                                    new_state = STATE.Scan;
+                                }
+                            } else {
+                                frequencies = int2byteArray(500, 2);
+                                new_state = STATE.Scan;
+                            }
+                            break;
+                        default:
+                            throw new IllegalStateException("Heder " + new String(header) + " not valid in getNextState");
+                    }
+                }
+                else {
+                    new_state = STATE.Waiting;
+                }
+                break;
+        }
+        return new_state;
+    }
+
+//    private byte[] int2byteArray(int number, int digits) {
+//        for(int loopcnt = 0; loopcnt < digits; ++loopcnt) {
+//            byte b = (byte) (number & 0xFF);
+//        }
+//
+//    }
+//
+//    private int byteArray2int(byte[] frequencies) {
+//        int digit = 0;
+//        int result = 0;
+//        for(byte b : frequencies) {
+//            int I = (int) b;
+//            if (I < 0) {
+//                I += 256;
+//            }
+//            result += I * 10^digit;
+//            digit ++;
+//        }
+//        return result;
+//    }
 
     private byte[] device_name()
     {
@@ -223,7 +290,7 @@ public class TCPServer_fakedata {
         return raw_data;
     }
 
-    private byte[] Kalibrationstabelle(byte[] received_from_Remo)
+    private byte[] Kalibrationstabelle()
     {
         ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(53328);
         String p = "P";
@@ -287,27 +354,27 @@ public class TCPServer_fakedata {
         return splitted;
     }
 
-    private boolean check(byte[] received_from_ESP) {
+    private boolean checkForCorrectness(byte[] received_from_ESP) {
         //check for RD16
-        if (!split_packet(0, 3, received_from_ESP).toString().equals("RD16")) {
-            throw new IllegalArgumentException("Header is not RD16 but: " + split_packet(0, 3, received_from_ESP).toString());
+        if (!new String(received_from_ESP).startsWith("RD16")) {
+            throw new IllegalArgumentException("Header is not RD16 but: " + new String(split_packet(0, 3, received_from_ESP)));
         }
         //Check for PEND
-        if (!received_from_ESP.toString().endsWith("PEND")) {
-            throw new IllegalArgumentException("Packge doesnt end with PEND, but with: " + received_from_ESP.toString());
+        if (!new String(received_from_ESP).endsWith("PEND")) {
+            throw new IllegalArgumentException("Packge doesnt end with PEND, but with: " + new String(received_from_ESP));
         }
 
-        //Check if length is right for headerdeatails
+        //Check if length is right for headerDetails
         byte[] header = split_packet(3, 7, received_from_ESP);
-        if ((header.toString().equals("DRDY")) && !(received_from_ESP.length == 32)) {
+        if ((new String(header).equals("DRDY")) && !(received_from_ESP.length == 32)) {
             throw new IllegalArgumentException("Header is not coherent with length");
-        } else if ((header.toString().equals("CALD")) && !(received_from_ESP.length == 53423)) {
+        } else if ((new String(header).equals("CALD")) && !(received_from_ESP.length == 53423)) {
             throw new IllegalArgumentException("Header is not coherent with length");
-        } else if ((header.toString().equals("SCAN")) && !(received_from_ESP.length == 56)) {
+        } else if ((new String(header).equals("SCAN")) && !(received_from_ESP.length == 56)) {
             throw new IllegalArgumentException("Header is not coherent with length");
-        } else if ((header.toString().equals("DETV")) && !(received_from_ESP.length == 56)) {
+        } else if ((new String(header).equals("DETV")) && !(received_from_ESP.length == 56)) {
             throw new IllegalArgumentException("Header is not coherent with length");
-        } else if ((header.toString().equals("TIME")) && !(received_from_ESP.length == 95)) {
+        } else if ((new String(header).equals("TIME")) && !(received_from_ESP.length == 95)) {
             throw new IllegalArgumentException("Header is not coherent with length");
         }
         return true;
@@ -325,21 +392,8 @@ public class TCPServer_fakedata {
             int PackSize = -1; // gives error if packsize is not overwriten
             byte Atten_LNA = received_from_Remo[12]; //return Atten./LNA directly from received_from_Remo packet
 
-
-            //done
-            if (headerString.endsWith("DRDY")) {
-                PackSize = 32;
-                inStreamBuffer = new ByteArrayOutputStream(PackSize);
-                inStreamBuffer.write(header);
-                inStreamBuffer.write(device_id);
-                inStreamBuffer.write(Atten_LNA);
-                inStreamBuffer.write(reserviert(12, 0));
-                inStreamBuffer.write(battery_charge);
-                inStreamBuffer.write(battery_voltage);
-                inStreamBuffer.write("PEND".getBytes());
-            }
             //Todo
-            else if (headerString.endsWith("CALD")) {
+            if (headerString.endsWith("CALD")) {
                 PackSize = 53423;
                 inStreamBuffer = new ByteArrayOutputStream(PackSize);
                 inStreamBuffer.write(header);
@@ -350,11 +404,10 @@ public class TCPServer_fakedata {
                 inStreamBuffer.write(anzahl_tabellen);
                 inStreamBuffer.write(freqs_N);
                 inStreamBuffer.write(levels_M);
-                inStreamBuffer.write(Kalibrationstabelle(received_from_Remo));
+                inStreamBuffer.write(Kalibrationstabelle());
                 inStreamBuffer.write(battery_charge);
                 inStreamBuffer.write(battery_voltage);
                 inStreamBuffer.write("PEND".getBytes());
-
             }
             //done
             else if (headerString.endsWith("SCAN")) {

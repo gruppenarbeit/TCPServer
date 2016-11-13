@@ -25,8 +25,8 @@ public class AttenuatorMainActivity extends AppCompatActivity {
 
     // These Attributes are also needed in the "real" App
     WifiManager wifi_manager;
-    //TCPServer_fakedata Socket;
-    TCPServer Socket;
+    TCPServer_fakedata Socket;
+    //TCPServer Socket;
     WifiDataBuffer wifiDataBuffer;
     Boolean WifiWasOn;
 
@@ -40,8 +40,8 @@ public class AttenuatorMainActivity extends AppCompatActivity {
             if (maxleng > 200) {
                 maxleng = 200;
             }
-
-            String messageType = "\nWifiPackage.toString: ";
+            byte[] Header = {rowData[4], rowData[5], rowData[6], rowData[7]};
+            String messageType = "Header: " + new String(Header) + "\n";
             for (int i = 0; i < maxleng; i++) {
                 messageType += (rowData[i] & 0xFF) + "#";
             }
@@ -95,8 +95,8 @@ public class AttenuatorMainActivity extends AppCompatActivity {
         SocketText = (TextView) findViewById(R.id.Sockettext);
 
         wifiDataBuffer = new WifiDataBuffer();
-        Socket = new TCPServer(wifiDataBuffer); // Initialise TCPServer as well
- //       Socket = new TCPServer_fakedata(wifiDataBuffer); // Initialise TCPServer as well
+        //Socket = new TCPServer(wifiDataBuffer); // Initialise TCPServer as well
+        Socket = new TCPServer_fakedata(wifiDataBuffer); // Initialise TCPServer as well
 
         wifi_manager = (WifiManager) this.getSystemService(AttenuatorMainActivity.this.WIFI_SERVICE);
         WifiConfiguration wifi_configuration = null;
