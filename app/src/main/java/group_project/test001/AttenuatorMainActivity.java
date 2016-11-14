@@ -25,8 +25,9 @@ public class AttenuatorMainActivity extends AppCompatActivity {
 
     // These Attributes are also needed in the "real" App
     WifiManager wifi_manager;
-    TCPServer_fakedata Socket;
-    //TCPServer Socket;
+    TCP_SERVER Socket;
+    // TCPServer_fakedata Socket;
+    // TCPServer Socket;
     WifiDataBuffer wifiDataBuffer;
     Boolean WifiWasOn;
 
@@ -97,6 +98,7 @@ public class AttenuatorMainActivity extends AppCompatActivity {
         wifiDataBuffer = new WifiDataBuffer();
         //Socket = new TCPServer(wifiDataBuffer); // Initialise TCPServer as well
         Socket = new TCPServer_fakedata(wifiDataBuffer); // Initialise TCPServer as well
+
 
         wifi_manager = (WifiManager) this.getSystemService(AttenuatorMainActivity.this.WIFI_SERVICE);
         WifiConfiguration wifi_configuration = null;

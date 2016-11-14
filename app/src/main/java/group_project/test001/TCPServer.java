@@ -19,7 +19,7 @@ import java.net.Socket;
  * Source: http://stackoverflow.com/questions/1212386/concurrent-and-blocking-queue-in-java
  */
 
-public class TCPServer {
+public class TCPServer implements TCP_SERVER {
 
     private Thread serverThread = null;
     private WifiDataBuffer wifiDataBuffer;
