@@ -99,6 +99,7 @@ public class AttenuatorMainActivity extends AppCompatActivity {
         //Socket = new TCPServer(wifiDataBuffer); // Initialise TCPServer as well
         Socket = new TCPServer_fakedata(wifiDataBuffer); // Initialise TCPServer as well
 
+        // WifiWasOn = initialiseWifiSettings(this);
 
         wifi_manager = (WifiManager) this.getSystemService(AttenuatorMainActivity.this.WIFI_SERVICE);
         WifiConfiguration wifi_configuration = null;
@@ -208,7 +209,7 @@ public class AttenuatorMainActivity extends AppCompatActivity {
         }
 
 
-        Thread t = new Thread() {
+        Thread TextFieldUpdaterThread = new Thread() {
             @Override
             public void run() {
                 Log.d("MainActivity", "Starting Thread, that updates SocketText");
@@ -229,7 +230,7 @@ public class AttenuatorMainActivity extends AppCompatActivity {
                 }
             }
         };
-        t.start();
+        TextFieldUpdaterThread.start();
     }
 
 }

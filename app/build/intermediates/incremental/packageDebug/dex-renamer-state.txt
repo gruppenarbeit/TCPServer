@@ -1,4 +1,4 @@
-#Tue Nov 15 16:36:10 CET 2016
+#Fri Nov 18 11:11:34 CET 2016
 base.0=/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d30cf45f0b454905b6ee05f0e9bde63c496c48c8
 renamed.1=classes2.dex
 renamed.0=classes.dex

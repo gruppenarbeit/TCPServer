@@ -20,6 +20,7 @@ import java.net.Socket;
  */
 
 public class TCPServer implements TCP_SERVER {
+    public int get_Progress() { return 0;}
 
     private Thread serverThread = null;
     private WifiDataBuffer wifiDataBuffer;
@@ -170,4 +171,5 @@ public class TCPServer implements TCP_SERVER {
         t.setUncaughtExceptionHandler(h);
         t.start();
     }  // end Constructor
+
 }

@@ -56,8 +56,16 @@ public class TCPServer_fakedata implements TCP_SERVER {
     Random rand = new Random();
     final int TimeItTakesToMeasureRMS = 200; // milliseconds, used in measre()
     final int TimeItTakesToMeasurePeak = 20; // milliseconds, used in measre()
+    private int cald_progress = 0;
 
     public enum STATE {Start, Waiting, Time, Scan, Detv, Callibrate, Stop}
+
+    public synchronized int get_Progress(){
+        return cald_progress;
+    }
+    public synchronized void increment_Progress() {
+        cald_progress += 1;
+    }
 
     public TCPServer_fakedata(final WifiDataBuffer wifiDataBuffer) throws IllegalStateException {
         Log.d(LOG_TAG,"Constructor of TCPServer called");
@@ -148,6 +156,10 @@ public class TCPServer_fakedata implements TCP_SERVER {
                                         send(DataFromESP.toByteArray());
                                         break;
                                     case Callibrate:
+                                        for(int i = 0; i < 27; ++i){
+                                            sleep(500);
+                                            increment_Progress();
+                                        }
                                         DataFromESP.write(RD16);
                                         DataFromESP.write(CALD);
                                         DataFromESP.write(device_id);
@@ -161,7 +173,6 @@ public class TCPServer_fakedata implements TCP_SERVER {
                                         DataFromESP.write(battery_charge);
                                         DataFromESP.write(battery_voltage);
                                         DataFromESP.write("PEND".getBytes());
-                                        sleep(5000); // takes approx 30 sec in realiy
                                         send(DataFromESP.toByteArray());
                                         current_Pack = null;
                                         break;
@@ -380,8 +391,9 @@ public class TCPServer_fakedata implements TCP_SERVER {
         return inStreamBuffer.toByteArray();
     }
 
+    // TODO: create more realistic measurement Data.
     private byte[] measure(int freqency) {
-        // TODO: create more realistic measurement Data.
+
 
         ByteArrayOutputStream result = new ByteArrayOutputStream(8);
         byte[] zeros = int2byteArray(0, 4);
@@ -477,9 +489,9 @@ public class TCPServer_fakedata implements TCP_SERVER {
         byte[] Messgrösse_p = p.getBytes();
         for(int i=0; i< 4; i++) // 4times for P, einstellungen is  0,1,2,3
         {
-            byte[] Einstellungen = {(byte) i};
+            byte[] LNA_Settings = {(byte) i};
             try {
-                inStreamBuffer.write(tabelle(Messgrösse_p, Einstellungen)); //returns tabelle-array with 6666 bytes
+                inStreamBuffer.write(tabelle(Messgrösse_p, LNA_Settings)); //returns tabelle-array with 6666 bytes
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -498,29 +510,33 @@ public class TCPServer_fakedata implements TCP_SERVER {
         return inStreamBuffer.toByteArray();
     }
 
-    //TODO: Fill with data
-    private byte[] tabelle(byte[] Messgrösse, byte[] Einstellungen)
+    //TODO: Fill with data from Marcos Excel-Files
+    private byte[] tabelle(byte[] Peak_RMS_All, byte[] LNA_Settings)
+
     {
         ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(6666);
         try {
-            inStreamBuffer.write(Messgrösse);
-            inStreamBuffer.write(Einstellungen);
+            inStreamBuffer.write(Peak_RMS_All);
+            inStreamBuffer.write(LNA_Settings);
             for(int i=0; i<100; i++) //freq_list
             {
-                byte[] temp= int2byteArray((i+1)*100, 2); // Frequenz-List
+                // TODO: get freqlist from ExcelFile (collum)
+                byte[] temp= int2byteArray((i+1)*100, 2); // Frequenz-List as int16 = 2 Bytes
+
                 inStreamBuffer.write(temp);
             }
 
-            for(int cnt = 0; cnt < 16; ++cnt) {
-                inStreamBuffer.write(int2byteArray(1000*cnt, 4));
+            for(int cnt = 0; cnt < 16; ++cnt) { // Power levels
+                // TODO: get Powerlevellist from Excelfile (row)
+                inStreamBuffer.write(int2byteArray(1000*cnt, 4)); // Power levels as int32 = 4 Bytes
             }
 
 
-            for(int i=0; i<100; i++) //cal_data
+            for(int i=0; i<100; i++) // loop through cal_data
             {
-                for(int j=0; j<16; j++) //power_lvls
+                for(int j=0; j<16; j++) // loop through  power_levels
                 {
-                    inStreamBuffer.write(int2byteArray((j+1)*100, 4));//TODO: right range
+                    inStreamBuffer.write(int2byteArray((j+1)*100, 4)); // TODO: get Data from exelfile
                 }
             }
         } catch (IOException e) {
