@@ -1,5 +1,6 @@
 package group_project.test001;
 
+import android.content.Intent;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 import java.lang.reflect.Method;
 
 
-public class AttenuatorMainActivity extends AppCompatActivity {
+public class OnlyActivity extends AppCompatActivity {
 
     Button sendScan;
     Button SendLive;
@@ -30,60 +31,14 @@ public class AttenuatorMainActivity extends AppCompatActivity {
     // TCPServer Socket;
     WifiDataBuffer wifiDataBuffer;
     Boolean WifiWasOn;
-
-    // Dequeues an element from wifiDataBuffer and puts it on a TextView
-    // Called by Thread t, see OnCreate
-    public void update_Sockettext() { // TODO: Dequeueing elements schould be done by Matthias Thread
-        if (wifiDataBuffer.isDataWaiting_FromESP()) {
-            byte[] rowData = wifiDataBuffer.deque_FromESP();
-            int maxleng = rowData.length;
-            String str = "Messages received:\n";
-            if (maxleng > 200) {
-                maxleng = 200;
-            }
-            byte[] Header = {rowData[4], rowData[5], rowData[6], rowData[7]};
-            String messageType = "Header: " + new String(Header) + "\n";
-            for (int i = 0; i < maxleng; i++) {
-                messageType += (rowData[i] & 0xFF) + "#";
-            }
-            messageType += ",\n";
-
-            SocketText.setText(str + messageType);
-        }
-    }
-
-    // For sending Commands to the ESP.
-    private void SendScanTrigger() { // Dev ID =
-        byte[] ScanTriggerPack = {82, 68, 49, 54, 83, 67, 65, 78, 0, 0, 0, 125, 0, 80, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 80, 69, 78, 68};
-        wifiDataBuffer.enqueue_ToESP(ScanTriggerPack);
-    }
-
-    private void SendLiveTrigger() {
-        // byte[] LiveTriggerPack = {82,   68,   49,   54,   84,   73,   77,   69,    0,    0, 0, 125,    0,    0,    7,   65,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
-        byte[] LiveTriggerPack = {82, 68, 49, 54, 84, 73, 77, 69, 0, 0, 0, 125, 0, 0, 7, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
-        wifiDataBuffer.enqueue_ToESP(LiveTriggerPack);
-    }
-
-    private void SendLiveStop() {
-        byte[] LiveStopPack = {82, 68, 49, 54, 84, 73, 77, 69, 0, 0, 0, 125, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
-        wifiDataBuffer.enqueue_ToESP(LiveStopPack);
-    }
-
-    private void SendCaliTrigger() {
-        byte[] calitrigger = {82, 68, 49, 54, 67, 65, 76, 68,0, 0, 0, 125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
-        wifiDataBuffer.enqueue_ToESP(calitrigger);
-    }
-
-    private void SendDETVTrigger() {
-        byte[] DETVTrigger = {82, 68, 49, 54, 68, 69, 84, 86, 0, 0, 0, 125, 0, 4, 0, 2, 0, 20, 0, 60, 0, 100, 0, 0, 0, 0, 80, 0, 80, 69, 78, 68};
-        wifiDataBuffer.enqueue_ToESP(DETVTrigger);
-    }
+    private Intent Service;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("MainActivity","in OnCreate of AttenuatorMainActivity");
+        Log.d("MainActivity","in OnCreate of OnlyActivity");
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -101,7 +56,7 @@ public class AttenuatorMainActivity extends AppCompatActivity {
 
         // WifiWasOn = initialiseWifiSettings(this);
 
-        wifi_manager = (WifiManager) this.getSystemService(AttenuatorMainActivity.this.WIFI_SERVICE);
+        wifi_manager = (WifiManager) this.getSystemService(OnlyActivity.this.WIFI_SERVICE);
         WifiConfiguration wifi_configuration = null;
         if(wifi_manager.getWifiState() == 2 || wifi_manager.getWifiState() == 3) {// Enum Constantes for Wifi_enabling and Wifi_enabled
             WifiWasOn = true;
@@ -169,6 +124,54 @@ public class AttenuatorMainActivity extends AppCompatActivity {
         return true;
     }
 
+    // Dequeues an element from wifiDataBuffer and puts it on a TextView
+    // Called by Thread t, see OnCreate
+    public void update_Sockettext() { // TODO: Dequeueing elements schould be done by Matthias Thread
+        if (wifiDataBuffer.isDataWaiting_FromESP()) {
+            byte[] rowData = wifiDataBuffer.deque_FromESP();
+            int maxleng = rowData.length;
+            String str = "Messages received:\n";
+            if (maxleng > 200) {
+                maxleng = 200;
+            }
+            byte[] Header = {rowData[4], rowData[5], rowData[6], rowData[7]};
+            String messageType = "Header: " + new String(Header) + "\n";
+            for (int i = 0; i < maxleng; i++) {
+                messageType += (rowData[i] & 0xFF) + "#";
+            }
+            messageType += ",\n";
+
+            SocketText.setText(str + messageType);
+        }
+    }
+
+    // For sending Commands to the ESP.
+    private void SendScanTrigger() { // Dev ID =
+        byte[] ScanTriggerPack = {82, 68, 49, 54, 83, 67, 65, 78, 0, 0, 0, 125, 0, 80, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 80, 69, 78, 68};
+        wifiDataBuffer.enqueue_ToESP(ScanTriggerPack);
+    }
+
+    private void SendLiveTrigger() {
+        // byte[] LiveTriggerPack = {82,   68,   49,   54,   84,   73,   77,   69,    0,    0, 0, 125,    0,    0,    7,   65,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
+        byte[] LiveTriggerPack = {82, 68, 49, 54, 84, 73, 77, 69, 0, 0, 0, 125, 0, 0, 7, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
+        wifiDataBuffer.enqueue_ToESP(LiveTriggerPack);
+    }
+
+    private void SendLiveStop() {
+        byte[] LiveStopPack = {82, 68, 49, 54, 84, 73, 77, 69, 0, 0, 0, 125, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
+        wifiDataBuffer.enqueue_ToESP(LiveStopPack);
+    }
+
+    private void SendCaliTrigger() {
+        byte[] calitrigger = {82, 68, 49, 54, 67, 65, 76, 68,0, 0, 0, 125, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
+        wifiDataBuffer.enqueue_ToESP(calitrigger);
+    }
+
+    private void SendDETVTrigger() {
+        byte[] DETVTrigger = {82, 68, 49, 54, 68, 69, 84, 86, 0, 0, 0, 125, 0, 4, 0, 2, 0, 20, 0, 60, 0, 100, 0, 0, 0, 0, 80, 0, 80, 69, 78, 68};
+        wifiDataBuffer.enqueue_ToESP(DETVTrigger);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -190,7 +193,7 @@ public class AttenuatorMainActivity extends AppCompatActivity {
         super.onStart();// ATTENTION: This was auto-generated to implement the App Indexing API.
 
 
-        wifi_manager = (WifiManager) this.getSystemService(AttenuatorMainActivity.this.WIFI_SERVICE);
+        wifi_manager = (WifiManager) this.getSystemService(OnlyActivity.this.WIFI_SERVICE);
         WifiConfiguration wifi_configuration = null;
         if(wifi_manager.getWifiState() == 2 || wifi_manager.getWifiState() == 3) {// Enum Constantes for Wifi_enabling and Wifi_enabled
             Log.d("MainActivity","OnStart: Wifi was turned on @ onStart");
@@ -214,7 +217,7 @@ public class AttenuatorMainActivity extends AppCompatActivity {
             public void run() {
                 Log.d("MainActivity", "Starting Thread, that updates SocketText");
                 while (true) {
-                    AttenuatorMainActivity.this.runOnUiThread(new Runnable() {
+                    OnlyActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
                             update_Sockettext();
                             //Log.d("MainActivity", "In While");

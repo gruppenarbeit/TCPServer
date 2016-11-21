@@ -12,7 +12,6 @@
 
 
     <application>
-        <service android:name=".Exposimeter_ServerSocket_Service"/>
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -20,7 +19,7 @@
         android:theme="@style/AppTheme">
         <activity
 
-            android:name=".AttenuatorMainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
@@ -35,5 +34,11 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+        <service
+            android:name=".CommunicationService"
+            android:exported="true"
+            android:stopWithTask="true"
+            >
+        </service>
     </application>
 </manifest>

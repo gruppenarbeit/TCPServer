@@ -2834,8 +2834,8 @@ containing a value of this type.
         public static final int standard=0x7f0c003e;
         public static final int start=0x7f0c002a;
         public static final int status_bar_latest_event_content=0x7f0c0088;
-        public static final int stop_detail=0x7f0c007b;
         public static final int stop_live=0x7f0c007a;
+        public static final int stop_service=0x7f0c007b;
         public static final int submenuarrow=0x7f0c005f;
         public static final int submit_area=0x7f0c0070;
         public static final int tabMode=0x7f0c000d;

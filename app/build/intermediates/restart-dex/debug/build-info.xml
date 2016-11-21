@@ -4,30 +4,43 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="7325603405828"
+    timestamp="16010079927840"
     token="2537893265448445864"
-    verifier="FULL_BUILD_REQUESTED" >
+    verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="847" />
+        duration="243" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="215" />
+        duration="37" />
     <task
         name="verifier"
-        duration="28" />
+        duration="3" />
 
     <artifact
-        location="/home/andre_eggli/AndroidStudioProjects/Test001/app/build/outputs/apk/app-debug.apk"
-        type="MAIN" />
+        location="/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+        type="RESOURCES" />
+    <artifact
+        location="/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
+        type="DEX" />
 
     <build
-        timestamp="10329141494435"
+        timestamp="5590445931827"
+        verifier="FULL_BUILD_REQUESTED" >
+        <artifact
+            location="/home/andre_eggli/AndroidStudioProjects/Test001/app/build/outputs/apk/app-debug.apk"
+            type="MAIN" />
+    </build>
+    <build
+        timestamp="16010079927840"
         verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/instant-run-resources/resources-debug.ir.ap_"
+            type="RESOURCES" />
         <artifact
             location="/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
             type="DEX" />

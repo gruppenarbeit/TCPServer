@@ -11,7 +11,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:screenOrientation="portrait"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="group_project.test001.AttenuatorMainActivity"
+    tools:context="group_project.test001.MainActivity"
     tools:showIn="@layout/activity_main"><![CDATA[
 
 
@@ -94,14 +94,13 @@
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="DetStop"
+        android:text="StopService"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/stop_detail"
-        android:layout_alignBaseline="@+id/send_calitrigger"
-        android:layout_alignBottom="@+id/send_calitrigger"
-        android:layout_alignLeft="@+id/send_detail"
-        android:layout_alignStart="@+id/send_detail" />
+        android:id="@+id/stop_service"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
 </RelativeLayout>

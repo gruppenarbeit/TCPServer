@@ -828,8 +828,8 @@ int id src_over 0x7f0c001f
 int id standard 0x7f0c003e
 int id start 0x7f0c002a
 int id status_bar_latest_event_content 0x7f0c0088
-int id stop_detail 0x7f0c007b
 int id stop_live 0x7f0c007a
+int id stop_service 0x7f0c007b
 int id submenuarrow 0x7f0c005f
 int id submit_area 0x7f0c0070
 int id tabMode 0x7f0c000d
