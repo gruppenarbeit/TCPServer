@@ -1434,35 +1434,35 @@ public class TCPServer_fakedata /*implements TCP_SERVER*/ {
 
 
 
-        if(Peak_RMS.equals("P") & LNA == 0)
+        if(Peak_RMS.equals("P") && LNA == 0)
         {
             return P0;
         }
-        else if (Peak_RMS.equals("P") & LNA == 1)
+        else if (Peak_RMS.equals("P") && LNA == 1)
         {
             return P21;
         }
-        else if (Peak_RMS.equals("P") & LNA == 2)
+        else if (Peak_RMS.equals("P") && LNA == 2)
         {
             return P42;
         }
-        else if (Peak_RMS.equals("P") & LNA == 3)
+        else if (Peak_RMS.equals("P") && LNA == 3)
         {
             return PLNA;
         }
-        else if (Peak_RMS.equals("R") & LNA == 0)
+        else if (Peak_RMS.equals("R") && LNA == 0)
         {
             return R0;
         }
-        else if (Peak_RMS.equals("R") & LNA == 1)
+        else if (Peak_RMS.equals("R") && LNA == 1)
         {
             return R21;
         }
-        else if (Peak_RMS.equals("R") & LNA == 2)
+        else if (Peak_RMS.equals("R") && LNA == 2)
         {
             return R42;
         }
-        else if (Peak_RMS.equals("R") & LNA == 3)
+        else if (Peak_RMS.equals("R") && LNA == 3)
         {
             return RLNA;
         }
