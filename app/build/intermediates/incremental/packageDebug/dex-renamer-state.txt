@@ -1,7 +1,7 @@
-#Mon Nov 21 17:10:29 CET 2016
-base.0=/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d30cf45f0b454905b6ee05f0e9bde63c496c48c8
+#Tue Nov 22 18:15:43 CET 2016
+base.0=/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_58837a1c1e9746963683cfc070a2152e3d4ac673
 renamed.1=classes2.dex
 renamed.0=classes.dex
-file.1=/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_19301dc091d8adb36b45841c033db6560894441b/classes.dex
-base.1=/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_19301dc091d8adb36b45841c033db6560894441b
-file.0=/home/andre_eggli/AndroidStudioProjects/Test001/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_d30cf45f0b454905b6ee05f0e9bde63c496c48c8/classes.dex
+file.1=/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c86e4f45d312633b60d23a9bac42eb9b68d705a3/classes.dex
+base.1=/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c86e4f45d312633b60d23a9bac42eb9b68d705a3
+file.0=/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_58837a1c1e9746963683cfc070a2152e3d4ac673/classes.dex
