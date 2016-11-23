@@ -26,17 +26,19 @@ public class CommunicationService extends Service {
     Boolean WifiWasOnWhenServiceWasStarted = false;
     static WifiDataBuffer wifiDataBuffer = new WifiDataBuffer();
     TCP_Data_dequeue_Thread TCP_Data_Sender = new TCP_Data_dequeue_Thread();
+
     static TCP_SERVER Socket = new Fake_TCP_Server(wifiDataBuffer); // Initialise Fake TCP to test
     // static TCP_SERVER Socket = new TCPServer(wifiDataBuffer); // Initialise real TCP_Server to test ESP8266
     // static TCP_SERVER Socket = new Excel_Facke_TCP_Server(wifiDataBuffer);
+
     IntentListenerForActivity ListenerForActivity; // receives Data from Activity via Broadcast
     private static final String LOG_TAG = "Service";
 
     public static final String ACTION_FROM_ACTIVITY = "ACTION_FROM_ACTIVITY";
     public static final String TRIGGER_Serv2Act = "Service -> Activity";
     public static final String COMMAND_Act2Serv = "COMMAND_Act2Serv";
-    public static final String TRIGGER_Act2Serv = "Activity -> Service";
     public static final int CMD_STOP = 1;
+    public static final String TRIGGER_Act2Serv = "Activity -> Service";
     public static final String DATA_BACK = "DATA_BACK";
 
     boolean running = true;
@@ -87,7 +89,7 @@ public class CommunicationService extends Service {
             // Source http://stackoverflow.com/questions/13946607/android-how-to-turn-on-hotspot-in-android-programmatically
             Method method = wifi_manager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
             method.invoke(wifi_manager, wifi_configuration, true);
-            Log.d(LOG_TAG,"turned Hotspot on");
+            Log.d(LOG_TAG,"in onStartCommand, turned Hotspot on");
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

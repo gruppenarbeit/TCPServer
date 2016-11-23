@@ -1,7 +1,5 @@
 package group_project.test001;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -24,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
     Button StopService;
     TextView SocketText;
     final String LOG_TAG = "MainActivity";
-
     WifiDataBuffer wifiDataBuffer = new WifiDataBuffer();
-    MyActivityReceiver myActivityReceiver;
+    MyActivityReceiver myActivityReceiver = new MyActivityReceiver(LOG_TAG, wifiDataBuffer);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +84,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity","OnStart of MainActivity");
         super.onStart();// ATTENTION: This was auto-generated to implement the App Indexing API.
 
-        //Register BroadcastReceiver
-        //to receive event from our service
-        myActivityReceiver = new MyActivityReceiver();
+
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(CommunicationService.TRIGGER_Serv2Act);
         registerReceiver(myActivityReceiver, intentFilter);
@@ -153,18 +149,6 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
-    }
-
-    private class MyActivityReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context arg0, Intent data) {
-            Log.d(LOG_TAG, "MyActivityReceiver in onReceive");
-            byte[] orgData = data.getByteArrayExtra(CommunicationService.DATA_BACK);
-            if (orgData != null) {
-                wifiDataBuffer.enque_FromESP(orgData);
-            }
-        }
     }
 
 
