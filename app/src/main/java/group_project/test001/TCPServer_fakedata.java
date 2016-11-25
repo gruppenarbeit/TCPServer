@@ -398,85 +398,127 @@ public class TCPServer_fakedata /*implements TCP_SERVER*/ {
         return inStreamBuffer.toByteArray();
     }
 
-    // TODO: create more realistic measurement Data.
     private byte[] measure(int freqency) {
 
-
+        Random random = new Random();
         ByteArrayOutputStream result = new ByteArrayOutputStream(8);
         byte[] zeros = int2byteArray(0, 4);
 
         String messgrösse_tostring = new String(MODE);
         try{
 
+            int[] meas_data_R;
+            int[] meas_data_P;
+            int meas = 0;
+            int k = 0;
+            int lowerbound = 0;
+            int upperbound = 0;
+
             if(messgrösse_tostring.equals("P")) {
                 sleep(TimeItTakesToMeasurePeak); // emulate measurement-behavior
 
-                result.write(zeros);
-
-                // TODO: make better
-                int meas = rand.nextInt(1000);
-                result.write(int2byteArray(meas, 4));
-
                 switch (byteArray2int(LNA)){
 
                     case 0:
-
+                        meas_data_P = data.getdata("P",0);
                         break;
                     case 1:
+                        meas_data_P = data.getdata("P",1);
                         break;
                     case 2:
+                        meas_data_P = data.getdata("P",2);
                         break;
                     case 3:
+                        meas_data_P = data.getdata("P",3);
                         break;
                     default:
                         throw new IllegalStateException("LNA out of range");
                 }
+
+                for(int i=1; i<101; i++)
+                {
+                    if (freqency == meas_data_P[i*17])
+                    {k = i;}
+                }
+                lowerbound= meas_data_P[k+1];
+                upperbound= meas_data_P[k+16];
+                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                result.write(zeros);
+                result.write(int2byteArray(meas, 4));
+
             } else if(messgrösse_tostring.equals("R")) {
                 sleep(TimeItTakesToMeasureRMS);
-
-                // TODO: make better
-                int meas = rand.nextInt(1000);
-                result.write(int2byteArray(meas, 4));
-                result.write(zeros);
-
                 switch (byteArray2int(LNA)){
 
                     case 0:
+                        meas_data_R = data.getdata("R",0);
                         break;
                     case 1:
+                        meas_data_R = data.getdata("R",1);
                         break;
                     case 2:
+                        meas_data_R = data.getdata("R",2);
                         break;
                     case 3:
+                        meas_data_R = data.getdata("R",3);
                         break;
                     default:
                         throw new IllegalStateException("LNA out of range");
                 }
+                for(int i=1; i<101; i++)
+                {
+                    if (freqency == meas_data_R[i*17])
+                    {k = i;}
+                }
+                lowerbound= meas_data_R[k+1];
+                upperbound= meas_data_R[k+16];
+                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                result.write(int2byteArray(meas, 4));
+                result.write(zeros);
 
             } else if (messgrösse_tostring.equals("A")) {
                 sleep(TimeItTakesToMeasureRMS + TimeItTakesToMeasurePeak);
-
-                // TODO: make better
-                int meas = rand.nextInt(1000);
-                result.write(int2byteArray(meas, 4));
-                // TODO: make better
-                meas = rand.nextInt(1000);
-                result.write(int2byteArray(meas, 4));
-
                 switch (byteArray2int(LNA)){
 
                     case 0:
-
+                        meas_data_R = data.getdata("R",0);
+                        meas_data_P = data.getdata("P",0);
                         break;
                     case 1:
+                        meas_data_R = data.getdata("R",1);
+                        meas_data_P = data.getdata("P",1);
                         break;
                     case 2:
+                        meas_data_R = data.getdata("R",2);
+                        meas_data_P = data.getdata("P",2);
                         break;
                     case 3:
+                        meas_data_R = data.getdata("R",3);
+                        meas_data_P = data.getdata("P",3);
                         break;
                     default:
                         throw new IllegalStateException("LNA out of range");
                 }
+                //RMS
+                for(int i=1; i<101; i++)
+                {
+                    if (freqency == meas_data_R[i*17])
+                    {k = i;}
+                }
+                lowerbound= meas_data_R[k+1];
+                upperbound= meas_data_R[k+16];
+                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                result.write(int2byteArray(meas, 4));
+                //Peak
+                for(int i=1; i<101; i++)
+                {
+                    if (freqency == meas_data_P[i*17])
+                    {k = i;}
+                }
+                lowerbound= meas_data_P[k+1];
+                upperbound= meas_data_P[k+16];
+                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                result.write(int2byteArray(meas, 4));
             } else {
                 throw new IllegalArgumentException("raw_data() not correctly implemented");
             }
