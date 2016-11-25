@@ -7,7 +7,6 @@ package group_project.test001;
 
 import android.util.Log;
 
-import com.example.matthustahli.radarexposimeter.WifiDataBuffer;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -30,7 +29,7 @@ import static java.lang.Thread.sleep;
  * Created by Markus on 11.11.2016.
  */
 
-public class TCPServer_fakedata /*implements TCP_SERVER*/ {
+public class TCPServer_fakedata implements TCP_SERVER {
 
     private WifiDataBuffer wifiDataBuffer;
     private ServerSocket serverSocket;
@@ -440,6 +439,8 @@ public class TCPServer_fakedata /*implements TCP_SERVER*/ {
                     if (freqency == meas_data_P[i*17])
                     {k = i;}
                 }
+                k=0;
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
                 lowerbound= meas_data_P[k+1];
                 upperbound= meas_data_P[k+16];
                 meas = random.nextInt(upperbound - lowerbound) + lowerbound;
@@ -465,11 +466,13 @@ public class TCPServer_fakedata /*implements TCP_SERVER*/ {
                     default:
                         throw new IllegalStateException("LNA out of range");
                 }
+                k=0;
                 for(int i=1; i<101; i++)
                 {
                     if (freqency == meas_data_R[i*17])
                     {k = i;}
                 }
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
                 lowerbound= meas_data_R[k+1];
                 upperbound= meas_data_R[k+16];
                 meas = random.nextInt(upperbound - lowerbound) + lowerbound;
@@ -500,21 +503,25 @@ public class TCPServer_fakedata /*implements TCP_SERVER*/ {
                         throw new IllegalStateException("LNA out of range");
                 }
                 //RMS
+                k=0;
                 for(int i=1; i<101; i++)
                 {
                     if (freqency == meas_data_R[i*17])
                     {k = i;}
                 }
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
                 lowerbound= meas_data_R[k+1];
                 upperbound= meas_data_R[k+16];
                 meas = random.nextInt(upperbound - lowerbound) + lowerbound;
                 result.write(int2byteArray(meas, 4));
                 //Peak
+                k=0;
                 for(int i=1; i<101; i++)
                 {
                     if (freqency == meas_data_P[i*17])
                     {k = i;}
                 }
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
                 lowerbound= meas_data_P[k+1];
                 upperbound= meas_data_P[k+16];
                 meas = random.nextInt(upperbound - lowerbound) + lowerbound;
@@ -575,21 +582,21 @@ public class TCPServer_fakedata /*implements TCP_SERVER*/ {
             //iterate first through freq, then power, then data
             //take each required int out-->temp, write temp then it into byte[] with right size
 
-            for(int i=1; i<101; i++) { // Frequenz-List as int16 = 2 Bytes
-                temp = csvString[i*17];
+            for(int i=0; i<100; i++) { // Frequenz-List as int16 = 2 Bytes
+                temp = csvString[(i+1)*17];
                 inStreamBuffer.write(int2byteArray(temp,2));
             }
 
-            for(int j = 1; j < 17; ++j) { // Power levels as int32 = 4 Bytes
-                temp = csvString[j];
+            for(int j = 0; j < 16; ++j) { // Power levels as int32 = 4 Bytes
+                temp = csvString[j+1];
                 inStreamBuffer.write(int2byteArray(temp,4));
             }
 
-            for(int i=1; i<101; i++) // loop through cal_data
+            for(int i=0; i<100; i++) // loop through cal_data
             {
-                for(int j=1; j<16; j++) // loop through  power_levels
+                for(int j=0; j<16; j++) // loop through  power_levels
                 {
-                    temp = csvString[(i*17) + j];
+                    temp = csvString[((i+1)*17) + (j+1)];
                     inStreamBuffer.write(int2byteArray(temp,4));
                 }
             }
