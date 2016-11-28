@@ -186,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void SendLiveTrigger() {
         // byte[] LiveTriggerPack = {82,   68,   49,   54,   84,   73,   77,   69,    0,    0, 0, 125,    0,    0,    7,   65,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,   80,   69,   78,   68};
-        byte[] LiveTriggerPack = {82, 68, 49, 54, 84, 73, 77, 69, 0, 0, 0, 125, 0, 0, 7, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
+        byte[] LiveTriggerPack =  {82, 68, 49, 54, 84, 73, 77, 69, 0, 0, 0, 125, 0, 2, 88, 65, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 80, 69, 78, 68};
         sendTrigger(LiveTriggerPack);
     }
 
@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void SendDETVTrigger() {
-        byte[] DETVTrigger = {82, 68, 49, 54, 68, 69, 84, 86, 0, 0, 0, 125, 0, 4, 0, 2, 0, 20, 0, 60, 0, 100, 0, 0, 0, 0, 80, 0, 80, 69, 78, 68};
+        byte[] DETVTrigger = {82, 68, 49, 54, 68, 69, 84, 86, 0, 0, 0, 125, 0, 2, 2, 88, 3, 32, 0, 0, 0, 0, 0, 0, 0, 0, 80, 0, 80, 69, 78, 68};
         //wifiDataBuffer.enqueue_ToESP(DETVTrigger);
         sendTrigger(DETVTrigger);
     }
