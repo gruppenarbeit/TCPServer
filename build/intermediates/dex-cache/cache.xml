@@ -3,57 +3,93 @@
 
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_00a9c5be91148ddf5a720915842023e647b1798d/classes.dex" />
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_799191bd74c376df497b870942f571d15d9e83f0/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_f67f9970186f115db573d91c1fbdd481224f06b3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_b44a919c5b5b1fc52279d3168807a0ffea4b2232/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_563e17d410d63dbba7dcdb3eb1f1dccddfb52239/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="dab802b4fcd45ca09afd62cbe8f518b97cbc2516">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c86e4f45d312633b60d23a9bac42eb9b68d705a3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_e168cf06da57e457c0405b884889161140f34001/classes.dex" />
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.2.1_43f33b9a1a485c6e5fff276f488f96dc3da4d569/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_065aa5a2137afe3e1ff8688c8644bd64eef6cba5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_1a17e59b6429a1c0c57af6e0b763f47bc804258f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_16ef3900468c6fd7b6f96d828a2650cb4b8bc998/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_472c5160bdc18c35bdd8e4805f88ba38d3d803c2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_b263da40db049107e1051ba5f535fe63570b9c48/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="91819576491a54ee37d6391152a087f887ec5ca2">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b33099c1ac935bbe233a272a871c6b8faf502a73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_3e1dd3a3009cfbe52679372bbec2eaeac5a49e2f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-24.2.1_88745f552419048b955bdd78bf1b1f4f386bfc87/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -62,79 +98,70 @@
         optimize="true"
         revision="24.0.2"
         sha1="b1b6ea3b7e4aa4f492509a4952029cd8e48019ad">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/commons-io-2.4_903097326c585ffbfceccce27d1c923b16154ba6/classes.dex" />
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/commons-io-2.4_903097326c585ffbfceccce27d1c923b16154ba6/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.2.1_6b3029b1df1d25fb48c2e04c0663621f14a4c181/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-24.2.1_d08316be477e136f5835096549bc553415c46c58/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_5a08db46a01e96aab7da0c64f85bac43748e976b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.2.1_2b8a9ca02527833d7d4fe21ed9377b4f61b6236f/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_f3147cf359da468688ce5457148cff4f678d0c14/classes.dex" />
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-24.2.1_03a4a45e6811e012e1eeb0115ff6abbe714b187b/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appindexing-8.4.0_10b5babe52a81963a38336857ccdfc9a4b0fb18b/classes.dex" />
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_f5ed626b1f95083eb606e47093b5b4d3e884aa8b/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-24.2.1_0c868be600dac24697ffe0d24625afd6e4f851a5/classes.dex" />
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_0c0ab87d7876ac46715c60d669ba2b1351e31eb8/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="a07851e1f55f7d70a184f7416de3e4ac54f69f29">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_58837a1c1e9746963683cfc070a2152e3d4ac673/classes.dex" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.2.1_1876d0cfd275f1ca19e0b1e635fb4bda49a42de9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_b18a16aab4a3bd3f4e39fa6bf067b9cb651a3e4c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_d924c8eea146eded58057e167b530b0f007dbff2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_4802fe3f439ac4cb5e5256d9435eb3be0c0457c1/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -143,70 +170,43 @@
         optimize="true"
         revision="24.0.2"
         sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_c3c2afe70298ee777897072ff41da3e9b3e3479a/classes.dex" />
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_c3c2afe70298ee777897072ff41da3e9b3e3479a/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_6f5c56b60f79cadb51a8f0aafccc05ff6a8dccd1/classes.dex" />
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appindexing-8.4.0_ce70b9e5a438fb51be82837770bf2707582c8dc1/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-24.2.1_96b787e684804025838745d145f2d9390005335e/classes.dex" />
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_91c9de34ee722eb96a18f41d2b3f94f20ed02cb8/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-24.2.1_1f41346e157fa43182da34037f4bc88e5cdc7505/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-24.2.1_5595542849d89a7e2df366809ece571be2fb42e3/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-8.4.0_a9fbabaa5b8e26e6a75c61a2a97b3b8aea477975/classes.dex" />
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-8.4.0_db7dcc1746c0f98ad4f753a82153a628b528e2df/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_8c524074fd6cb3d86802be867886506d6eb85a48/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_8b2a5a34503bfeb00d62c58bd7bebe63824f79fc/classes.dex" />
+        sha1="e7f5e0152c81513cdc01f99700b387d38c75dffb">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_345d1a10d5db841a1c0449614dee35252dc795b7/classes.dex" />
     </item>
 
 </items>

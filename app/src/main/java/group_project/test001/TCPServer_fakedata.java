@@ -45,6 +45,7 @@ public class TCPServer_fakedata implements TCP_SERVER {
     final byte[] DETV = "DETV".getBytes();
     final byte[] CALD = "CALD".getBytes();
     final byte[] SCAN = "SCAN".getBytes();
+    final byte[] PROG = "PROG".getBytes();
 
     final byte[] device_id = int2byteArray(125, 4);
     byte[] battery_charge = int2byteArray(77, 1); // in Prozent
@@ -163,8 +164,13 @@ public class TCPServer_fakedata implements TCP_SERVER {
                                         break;
                                     case Callibrate:
                                         for(int i = 0; i < 27; ++i){
-                                            sleep(500);
-                                            increment_Progress();
+                                            sleep(50);
+                                            ByteArrayOutputStream ProgressPack = new ByteArrayOutputStream(14);
+                                            ProgressPack.write(RD16);
+                                            ProgressPack.write(PROG);
+                                            ProgressPack.write(int2byteArray((int) (100.0 * i/27.0), 2));
+                                            ProgressPack.write(PEND);
+                                            send(ProgressPack.toByteArray());
                                         }
                                         DataFromESP.write(RD16);
                                         DataFromESP.write(CALD);
@@ -656,6 +662,11 @@ public class TCPServer_fakedata implements TCP_SERVER {
                 return true;
             case "DETV":
                 if (received_from_ESP.length != 56) {
+                    throw new IllegalArgumentException("Header is not coherent with length. length = " + ((Integer) received_from_ESP.length).toString());
+                }
+                return true;
+            case "PROG":
+                if (received_from_ESP.length != 14) {
                     throw new IllegalArgumentException("Header is not coherent with length. length = " + ((Integer) received_from_ESP.length).toString());
                 }
                 return true;

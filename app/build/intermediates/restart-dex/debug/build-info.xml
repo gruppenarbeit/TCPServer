@@ -4,8 +4,8 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="5239174374950"
-    token="-8792973156131835810"
+    timestamp="5280024044656"
+    token="6923925086317579339"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
@@ -21,37 +21,22 @@
         name="verifier"
         duration="0" />
 
-    <artifact
-        location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
-        type="DEX" />
-
     <build
-        timestamp="1286677959135"
+        timestamp="4768070901165"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/outputs/apk/app-debug.apk"
+            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/outputs/apk/app-debug.apk"
             type="MAIN" />
     </build>
     <build
-        timestamp="5178583187200"
-        verifier="COMPATIBLE" >
-        <artifact
-            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/reload-dex/debug/classes.dex"
-            type="RELOAD_DEX" />
-    </build>
-    <build
-        timestamp="5239174374950"
+        timestamp="5150335427056"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
-            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
+            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
             type="DEX" />
     </build>
     <build
-        timestamp="10691231545431"
-        verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/app/build/outputs/apk/app-debug.apk"
-            type="MAIN" />
-    </build>
+        timestamp="5280024044656"
+        verifier="COLD_SWAP_REQUESTED" />
 
 </instant-run>
