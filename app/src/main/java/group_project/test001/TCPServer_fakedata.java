@@ -405,7 +405,6 @@ public class TCPServer_fakedata implements TCP_SERVER {
 
     private byte[] measure(int freqency) {
 
-        Random random = new Random();
         ByteArrayOutputStream result = new ByteArrayOutputStream(8);
         byte[] zeros = int2byteArray(0, 4);
 
@@ -446,10 +445,12 @@ public class TCPServer_fakedata implements TCP_SERVER {
                     if (freqency == meas_data_P[i*17])
                     {k = i;}
                 }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
                 lowerbound= meas_data_P[(17*k)+1];
                 upperbound= meas_data_P[(17*k)+16];
-                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                if (upperbound - lowerbound <= 0)
+                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 1");}
+                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
                 result.write(zeros);
                 result.write(int2byteArray(meas, 4));
 
@@ -478,10 +479,12 @@ public class TCPServer_fakedata implements TCP_SERVER {
                     if (freqency == meas_data_R[i*17])
                     {k = i;}
                 }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
-                lowerbound= meas_data_R[k+1];
-                upperbound= meas_data_R[k+16];
-                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
+                lowerbound= meas_data_R[(17*k)+1];
+                upperbound= meas_data_R[(17*k)+16];
+                if (upperbound - lowerbound <= 0)
+                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 2");}
+                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
                 result.write(int2byteArray(meas, 4));
                 result.write(zeros);
 
@@ -515,10 +518,12 @@ public class TCPServer_fakedata implements TCP_SERVER {
                     if (freqency == meas_data_R[i*17])
                     {k = i;}
                 }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
-                lowerbound= meas_data_R[k+1];
-                upperbound= meas_data_R[k+16];
-                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
+                lowerbound= meas_data_R[(17*k)+1];
+                upperbound= meas_data_R[(17*k)+16];
+                if (upperbound - lowerbound <= 0)
+                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 3");}
+                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
                 result.write(int2byteArray(meas, 4));
                 //Peak
                 k=0;
@@ -528,9 +533,11 @@ public class TCPServer_fakedata implements TCP_SERVER {
                     {k = i;}
                 }
                 if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
-                lowerbound= meas_data_P[k+1];
-                upperbound= meas_data_P[k+16];
-                meas = random.nextInt(upperbound - lowerbound) + lowerbound;
+                lowerbound= meas_data_P[(17*k)+1];
+                upperbound= meas_data_P[(17*k)+16];
+                if (upperbound - lowerbound <= 0)
+                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 4");}
+                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
                 result.write(int2byteArray(meas, 4));
             } else {
                 throw new IllegalArgumentException("raw_data() not correctly implemented");
