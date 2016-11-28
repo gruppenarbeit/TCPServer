@@ -2,6 +2,7 @@ package group_project.test001;
 
 import android.util.Log;
 
+
 import org.apache.commons.io.IOUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -95,6 +96,7 @@ public class TCPServer implements TCP_SERVER {
 
                             if (inputStream.available() >= 8){ // true if receiving Data.
                                 int PackSize; // to be determined by HeaderDetails
+                                Boolean receivePiecewise = false; // only for CAL-Pack
 
                                 // IOUtils needs to be imported first
                                 // Source: http://stackoverflow.com/questions/24578243/cannot-resolve-symbol-ioutils
@@ -112,6 +114,7 @@ public class TCPServer implements TCP_SERVER {
                                 }
                                 else if (headerAndDetails.endsWith("CALD")) {
                                     PackSize = 53423;
+                                    receivePiecewise = true;
                                 }
                                 else if (headerAndDetails.endsWith("SCAN")) {
                                     PackSize = 56;
@@ -129,6 +132,26 @@ public class TCPServer implements TCP_SERVER {
                                 final ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(PackSize);
                                 inStreamBuffer.write(header); // make a temporary Buffer to store whole incomming Package untill fully received
 
+                                if(receivePiecewise) {
+                                    byte[] RD16 = "RD16".getBytes();
+                                    byte[] PROG = "PROG".getBytes();
+                                    byte[] PEND = "PEND".getBytes();
+                                    byte[] zero = {0};
+                                    while(inputStream.available() < PackSize - 8){
+                                        ByteArrayOutputStream buffi = new ByteArrayOutputStream(14);
+                                        buffi.write(RD16);
+                                        buffi.write(PROG);
+                                        buffi.write(zero);
+                                        int rec = inputStream.available();
+                                        Integer progressInPercent = (int) (100.0 * rec/(PackSize-8));
+                                        byte[] percent = {progressInPercent.byteValue()};
+                                        buffi.write(percent);
+                                        buffi.write(PEND);
+                                        wifiDataBuffer.enque_FromESP(buffi.toByteArray());
+                                        sleep(500);
+                                    }
+
+                                }
 
                                 byte[] content = IOUtils.toByteArray(inputStream, PackSize - 8); // read content of Package to corresponing header.
                                 String ContentString = new String(content); // Check if Postfix = "PEND"
@@ -141,6 +164,8 @@ public class TCPServer implements TCP_SERVER {
                             }
 
                         } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
 

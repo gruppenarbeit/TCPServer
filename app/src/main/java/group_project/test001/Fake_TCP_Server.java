@@ -1,4 +1,4 @@
-package group_project.test001;;
+package group_project.test001;
 
 
 /**
@@ -20,7 +20,7 @@ import static java.lang.Math.pow;
 import static java.lang.Thread.sleep;
 
 /**
- * Created by Markus on 11.11.2016.
+ * Created by aeggli on 11.11.2016.
  */
 
 public class Fake_TCP_Server implements TCP_SERVER {
@@ -42,7 +42,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
     final byte[] PROG = "PROG".getBytes();
 
     final byte[] device_id = int2byteArray(125, 4);
-    byte[] battery_charge = int2byteArray(77, 1); // in Prozent
+    byte[] battery_charge = int2byteArray(50, 1); // in Prozent
     byte[] battery_voltage = int2byteArray(1677, 2); // in mV
     int seq_nbr = 1;
 
@@ -119,6 +119,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         send(DataFromESP.toByteArray());
                                         break;
                                     case Waiting:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         try {
                                             sleep(500);
                                         } catch (InterruptedException e) {
@@ -126,6 +127,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         }
                                         break;
                                     case Time:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         DataFromESP.write(RD16);
                                         DataFromESP.write(TIME);
                                         DataFromESP.write(device_id);
@@ -142,6 +144,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         send(DataFromESP.toByteArray());
                                         break;
                                     case Scan:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         DataFromESP.write(RD16);
                                         DataFromESP.write(SCAN);
                                         DataFromESP.write(device_id);
@@ -157,12 +160,13 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         send(DataFromESP.toByteArray());
                                         break;
                                     case Callibrate:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         for(int i = 0; i < 27; ++i){
-                                            sleep(500);
+                                            sleep(50);
                                             ByteArrayOutputStream ProgressPack = new ByteArrayOutputStream(14);
                                             ProgressPack.write(RD16);
                                             ProgressPack.write(PROG);
-                                            ProgressPack.write(int2byteArray((int) (100.0 * i/27.0), 2));
+                                            ProgressPack.write(int2byteArray((int) (100.0 * i/26.0), 2));
                                             ProgressPack.write(PEND);
                                             send(ProgressPack.toByteArray());
                                         }
@@ -183,6 +187,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         current_Pack = null;
                                         break;
                                     case Detv:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         for(int i = 0; i < frequencies.length/2; ++i) {
                                             DataFromESP.write(RD16);
                                             DataFromESP.write(DETV);
@@ -236,7 +241,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
 
     private void send(byte[] DataPack) {
         if (checkForCorrectness(DataPack)) { // RD16, length, PEND
-           // Log.d("TCPServer", "DataPack is correct! in send()");
+            // Log.d("TCPServer", "DataPack is correct! in send()");
         }
         byte[] HeaderofData = {DataPack[4], DataPack[5], DataPack[6], DataPack[7]};
         Log.d(LOG_TAG,"TCPServer_fake did send a DataPackage of Type '"+ new String(HeaderofData) +"' to Android");
@@ -264,7 +269,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                         if (byteArray2int(MODE) == 0) {
                             current_Pack = null;
                             new_state = STATE.Waiting;
-                            Log.d(LOG_TAG, "End Live because received a TIME-Stop-Package, going to wait");
+                            Log.d(LOG_TAG, "Received a TIME-Stop-Package, going to wait");
                         }
                         break;
                     case "DETV":
@@ -274,7 +279,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                         if (byteArray2int(MODE) == 0) {
                             current_Pack = null;
                             new_state = STATE.Waiting;
-                            Log.d(LOG_TAG, "End Scan because received a DETV-Stop-Package, going to wait");
+                            Log.d(LOG_TAG, "Received a DETV-Stop-Package, going to wait");
                         }
                         break;
                     case "SCAN":
@@ -329,6 +334,9 @@ public class Fake_TCP_Server implements TCP_SERVER {
                 byteArray[1] = (byte)Integr;
             }
             // problems with wifiDataBuffer overflow: byteArray = ByteBuffer.allocate(byteArray_length).putInt(Integr).array();
+            else if (byteArray.length == 1){
+                byteArray[0] = (byte) Integr;
+            }
         }
         return byteArray;
     }

@@ -70,7 +70,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="91819576491a54ee37d6391152a087f887ec5ca2">
+        sha1="d4be18d2d46ff8eb63848f4d098d97b0a37317ad">
         <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b33099c1ac935bbe233a272a871c6b8faf502a73/classes.dex" />
     </item>
     <item
@@ -205,7 +205,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="e7f5e0152c81513cdc01f99700b387d38c75dffb">
+        sha1="135591d13eb53f7a9b8b3afc475cec2300726551">
         <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_345d1a10d5db841a1c0449614dee35252dc795b7/classes.dex" />
     </item>
 
