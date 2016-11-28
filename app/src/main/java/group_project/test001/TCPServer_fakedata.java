@@ -434,15 +434,15 @@ public class TCPServer_fakedata implements TCP_SERVER {
                         throw new IllegalStateException("LNA out of range");
                 }
 
+                k=0;
                 for(int i=1; i<101; i++)
                 {
                     if (freqency == meas_data_P[i*17])
                     {k = i;}
                 }
-                k=0;
                 if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
-                lowerbound= meas_data_P[k+1];
-                upperbound= meas_data_P[k+16];
+                lowerbound= meas_data_P[(17*k)+1];
+                upperbound= meas_data_P[(17*k)+16];
                 meas = random.nextInt(upperbound - lowerbound) + lowerbound;
                 result.write(zeros);
                 result.write(int2byteArray(meas, 4));
