@@ -137,12 +137,13 @@ public class TCPServer implements TCP_SERVER {
                                     byte[] PROG = "PROG".getBytes();
                                     byte[] PEND = "PEND".getBytes();
                                     byte[] zero = {0};
-                                    while(inputStream.available() < PackSize - 8){
+                                    int rec = 0;
+                                    while(rec < PackSize - 8){
                                         ByteArrayOutputStream buffi = new ByteArrayOutputStream(14);
                                         buffi.write(RD16);
                                         buffi.write(PROG);
                                         buffi.write(zero);
-                                        int rec = inputStream.available();
+                                        rec = inputStream.available();
                                         Integer progressInPercent = (int) (100.0 * rec/(PackSize-8));
                                         byte[] percent = {progressInPercent.byteValue()};
                                         buffi.write(percent);
@@ -150,6 +151,12 @@ public class TCPServer implements TCP_SERVER {
                                         wifiDataBuffer.enque_FromESP(buffi.toByteArray());
                                         sleep(500);
                                     }
+                                    ByteArrayOutputStream End_ProgressPack = new ByteArrayOutputStream(14);
+                                    End_ProgressPack.write(RD16);
+                                    End_ProgressPack.write(PROG);
+                                    End_ProgressPack.write(((Integer) 100).byteValue());
+                                    End_ProgressPack.write(PEND);
+                                    wifiDataBuffer.enque_FromESP(End_ProgressPack.toByteArray());
 
                                 }
 

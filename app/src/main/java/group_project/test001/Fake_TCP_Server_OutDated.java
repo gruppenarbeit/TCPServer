@@ -5,37 +5,32 @@ package group_project.test001;
  * Created by andre_eggli on 11/14/16.
  */
 
-
 import android.util.Log;
-import java.io.BufferedReader;
+
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import static java.lang.Math.pow;
 import static java.lang.Thread.sleep;
 
 /**
- * Created by Markus on 11.11.2016.
+ * Created by aeggli on 11.11.2016.
  */
 
-public class Fake_TCP_Server implements TCP_SERVER {
+public class Fake_TCP_Server_OutDated implements TCP_SERVER {
 
     private WifiDataBuffer wifiDataBuffer;
     private ServerSocket serverSocket;
     private Socket socket;
     // OutputStream outputStream; // Not used in Facke-TCP-Server
     // InputStream inputStream; // Not used in Facke-TCP-Server
-    final String LOG_TAG = "FAKE-TCPServer";
+    final String LOG_TAG = "FAKE-TCP-Server";
 
     final byte[] RD16 = "RD16".getBytes();
     final byte[] PEND = "PEND".getBytes();
@@ -47,7 +42,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
     final byte[] PROG = "PROG".getBytes();
 
     final byte[] device_id = int2byteArray(125, 4);
-    byte[] battery_charge = int2byteArray(77, 1); // in Prozent
+    byte[] battery_charge = int2byteArray(50, 1); // in Prozent
     byte[] battery_voltage = int2byteArray(1677, 2); // in mV
     int seq_nbr = 1;
 
@@ -73,7 +68,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
         cald_progress += 1;
     }
 
-    public Fake_TCP_Server(final WifiDataBuffer wifiDataBuffer) throws IllegalStateException {
+    public Fake_TCP_Server_OutDated(final WifiDataBuffer wifiDataBuffer) throws IllegalStateException {
         Log.d(LOG_TAG,"Constructor of TCPServer called");
         this.wifiDataBuffer = wifiDataBuffer;
 
@@ -124,6 +119,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         send(DataFromESP.toByteArray());
                                         break;
                                     case Waiting:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         try {
                                             sleep(500);
                                         } catch (InterruptedException e) {
@@ -131,6 +127,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         }
                                         break;
                                     case Time:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         DataFromESP.write(RD16);
                                         DataFromESP.write(TIME);
                                         DataFromESP.write(device_id);
@@ -147,6 +144,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         send(DataFromESP.toByteArray());
                                         break;
                                     case Scan:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         DataFromESP.write(RD16);
                                         DataFromESP.write(SCAN);
                                         DataFromESP.write(device_id);
@@ -162,12 +160,13 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         send(DataFromESP.toByteArray());
                                         break;
                                     case Callibrate:
-                                        for(int i = 0; i < 28; ++i){
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
+                                        for(int i = 0; i < 27; ++i){
                                             sleep(50);
                                             ByteArrayOutputStream ProgressPack = new ByteArrayOutputStream(14);
                                             ProgressPack.write(RD16);
                                             ProgressPack.write(PROG);
-                                            ProgressPack.write(int2byteArray((int) (100.0 * i/27.0), 2));
+                                            ProgressPack.write(int2byteArray((int) (100.0 * i/26.0), 2));
                                             ProgressPack.write(PEND);
                                             send(ProgressPack.toByteArray());
                                         }
@@ -188,6 +187,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         current_Pack = null;
                                         break;
                                     case Detv:
+                                        Log.d(LOG_TAG, "Current State = "+ state.toString());
                                         for(int i = 0; i < frequencies.length/2; ++i) {
                                             DataFromESP.write(RD16);
                                             DataFromESP.write(DETV);
@@ -269,7 +269,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                         if (byteArray2int(MODE) == 0) {
                             current_Pack = null;
                             new_state = STATE.Waiting;
-                            Log.d(LOG_TAG, "End Live because received a TIME-Stop-Package, going to wait");
+                            Log.d(LOG_TAG, "Received a TIME-Stop-Package, going to wait");
                         }
                         break;
                     case "DETV":
@@ -279,7 +279,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                         if (byteArray2int(MODE) == 0) {
                             current_Pack = null;
                             new_state = STATE.Waiting;
-                            Log.d(LOG_TAG, "End Scan because received a DETV-Stop-Package, going to wait");
+                            Log.d(LOG_TAG, "Received a DETV-Stop-Package, going to wait");
                         }
                         break;
                     case "SCAN":
@@ -334,6 +334,9 @@ public class Fake_TCP_Server implements TCP_SERVER {
                 byteArray[1] = (byte)Integr;
             }
             // problems with wifiDataBuffer overflow: byteArray = ByteBuffer.allocate(byteArray_length).putInt(Integr).array();
+            else if (byteArray.length == 1){
+                byteArray[0] = (byte) Integr;
+            }
         }
         return byteArray;
     }
@@ -402,146 +405,85 @@ public class Fake_TCP_Server implements TCP_SERVER {
         return inStreamBuffer.toByteArray();
     }
 
+    // TODO: create more realistic measurement Data.
     private byte[] measure(int freqency) {
+
 
         ByteArrayOutputStream result = new ByteArrayOutputStream(8);
         byte[] zeros = int2byteArray(0, 4);
 
         String messgrösse_tostring = new String(MODE);
-//        Log.d(LOG_TAG, "measure() -ment started at frequency = " + freqency + ", and MODE = " + messgrösse_tostring + ", and LNA = " + byteArray2int(LNA));
         try{
-
-            int[] meas_data_R;
-            int[] meas_data_P;
-            int meas = 0;
-            int k = 0;
-            int lowerbound = 0;
-            int upperbound = 0;
 
             if(messgrösse_tostring.equals("P")) {
                 sleep(TimeItTakesToMeasurePeak); // emulate measurement-behavior
 
+                result.write(zeros);
+
+                // TODO: make better
+                int meas = rand.nextInt(1000);
+                result.write(int2byteArray(meas, 4));
+
                 switch (byteArray2int(LNA)){
 
                     case 0:
-                        meas_data_P = data.getdata("P",0);
+
                         break;
                     case 1:
-                        meas_data_P = data.getdata("P",1);
                         break;
                     case 2:
-                        meas_data_P = data.getdata("P",2);
                         break;
                     case 3:
-                        meas_data_P = data.getdata("P",3);
                         break;
                     default:
                         throw new IllegalStateException("LNA out of range");
                 }
-
-                k=0;
-                for(int i=1; i<101; i++)
-                {
-                    if (freqency == meas_data_P[i*17])
-                    {k = i;}
-                }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
-                lowerbound= meas_data_P[(17*k)+1];
-                upperbound= meas_data_P[(17*k)+16];
-                // Log.d(LOG_TAG, "measure() lowerbound = " + lowerbound + ", upperbound = "+ upperbound);
-                if (upperbound - lowerbound <= 0)
-                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 1");}
-                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
-                result.write(zeros);
-                result.write(int2byteArray(meas, 4));
-
             } else if(messgrösse_tostring.equals("R")) {
                 sleep(TimeItTakesToMeasureRMS);
+
+                // TODO: make better
+                int meas = rand.nextInt(1000);
+                result.write(int2byteArray(meas, 4));
+                result.write(zeros);
+
                 switch (byteArray2int(LNA)){
 
                     case 0:
-                        meas_data_R = data.getdata("R",0);
                         break;
                     case 1:
-                        meas_data_R = data.getdata("R",1);
                         break;
                     case 2:
-                        meas_data_R = data.getdata("R",2);
                         break;
                     case 3:
-                        meas_data_R = data.getdata("R",3);
                         break;
                     default:
                         throw new IllegalStateException("LNA out of range");
                 }
-                k=0;
-                for(int i=1; i<101; i++)
-                {
-                    if (freqency == meas_data_R[i*17])
-                    {k = i;}
-                }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
-                lowerbound= meas_data_R[(17*k)+1];
-                upperbound= meas_data_R[(17*k)+16];
-                // Log.d(LOG_TAG, "measure() lowerbound = " + lowerbound + ", upperbound = "+ upperbound);
-                if (upperbound - lowerbound <= 0)
-                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 2");}
-                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
-                result.write(int2byteArray(meas, 4));
-                result.write(zeros);
 
             } else if (messgrösse_tostring.equals("A")) {
                 sleep(TimeItTakesToMeasureRMS + TimeItTakesToMeasurePeak);
+
+                // TODO: make better
+                int meas = rand.nextInt(1000);
+                result.write(int2byteArray(meas, 4));
+                // TODO: make better
+                meas = rand.nextInt(1000);
+                result.write(int2byteArray(meas, 4));
+
                 switch (byteArray2int(LNA)){
 
                     case 0:
-                        meas_data_R = data.getdata("R",0);
-                        meas_data_P = data.getdata("P",0);
+
                         break;
                     case 1:
-                        meas_data_R = data.getdata("R",1);
-                        meas_data_P = data.getdata("P",1);
                         break;
                     case 2:
-                        meas_data_R = data.getdata("R",2);
-                        meas_data_P = data.getdata("P",2);
                         break;
                     case 3:
-                        meas_data_R = data.getdata("R",3);
-                        meas_data_P = data.getdata("P",3);
                         break;
                     default:
                         throw new IllegalStateException("LNA out of range");
                 }
-                //RMS
-                k=0;
-                for(int i=1; i<101; i++)
-                {
-                    if (freqency == meas_data_R[i*17])
-                    {k = i;}
-                }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
-                lowerbound= meas_data_R[(17*k)+1];
-                upperbound= meas_data_R[(17*k)+16];
-                // Log.d(LOG_TAG, "measure() lowerbound = " + lowerbound + ", upperbound = "+ upperbound);
-                if (upperbound - lowerbound <= 0)
-                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 3");}
-                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
-                result.write(int2byteArray(meas, 4));
-                //Peak
-                k=0;
-                for(int i=1; i<101; i++)
-                {
-                    if (freqency == meas_data_P[i*17])
-                    {k = i;}
-                }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
-                lowerbound= meas_data_P[(17*k)+1];
-                upperbound= meas_data_P[(17*k)+16];
-                if (upperbound - lowerbound <= 0)
-                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 4");}
-                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
-                result.write(int2byteArray(meas, 4));
             } else {
                 throw new IllegalArgumentException("raw_data() not correctly implemented");
             }
@@ -563,7 +505,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
         {
             byte[] LNA_Settings = {(byte) i};
             try {
-                inStreamBuffer.write(tabelle(Messgrösse_p, LNA_Settings, p, i)); //returns tabelle-array with 6666 bytes
+                inStreamBuffer.write(tabelle(Messgrösse_p, LNA_Settings)); //returns tabelle-array with 6666 bytes
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -574,7 +516,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
         {
             byte[] Einstellungen = {(byte) i};
             try {
-                inStreamBuffer.write(tabelle(Messgrösse_r, Einstellungen, r, i)); //returns tabelle-array with 6666 bytes
+                inStreamBuffer.write(tabelle(Messgrösse_r, Einstellungen)); //returns tabelle-array with 6666 bytes
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -582,41 +524,35 @@ public class Fake_TCP_Server implements TCP_SERVER {
         return inStreamBuffer.toByteArray();
     }
 
-
-    private byte[] tabelle(byte[] Peak_RMS_All, byte[] LNA_Settings, String Peak_RMS, int LNA)
+    //TODO: Fill with data from Marcos Excel-Files
+    private byte[] tabelle(byte[] Peak_RMS_All, byte[] LNA_Settings)
 
     {
         ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(6666);
-
         try {
             inStreamBuffer.write(Peak_RMS_All);
             inStreamBuffer.write(LNA_Settings);
+            for(int i=0; i<100; i++) //freq_list
+            {
+                // TODO: get freqlist from ExcelFile (collum)
+                byte[] temp= int2byteArray((i+1)*100, 2); // Frequenz-List as int16 = 2 Bytes
 
-            int[] csvString = data.getdata(Peak_RMS,LNA); // returns 1-dim int[] filled with all data from one csv-datasheet
-            int temp=0;
-
-            //iterate first through freq, then power, then data
-            //take each required int out-->temp, write temp then it into byte[] with right size
-
-            for(int i=0; i<100; i++) { // Frequenz-List as int16 = 2 Bytes
-                temp = csvString[(i+1)*17];
-                inStreamBuffer.write(int2byteArray(temp,2));
+                inStreamBuffer.write(temp);
             }
 
-            for(int j = 0; j < 16; ++j) { // Power levels as int32 = 4 Bytes
-                temp = csvString[j+1];
-                inStreamBuffer.write(int2byteArray(temp,4));
+            for(int cnt = 0; cnt < 16; ++cnt) { // Power levels
+                // TODO: get Powerlevellist from Excelfile (row)
+                inStreamBuffer.write(int2byteArray(1000*cnt, 4)); // Power levels as int32 = 4 Bytes
             }
+
 
             for(int i=0; i<100; i++) // loop through cal_data
             {
                 for(int j=0; j<16; j++) // loop through  power_levels
                 {
-                    temp = csvString[((i+1)*17) + (j+1)];
-                    inStreamBuffer.write(int2byteArray(temp,4));
+                    inStreamBuffer.write(int2byteArray((j+1)*100, 4)); // TODO: get Data from exelfile
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -685,6 +621,5 @@ public class Fake_TCP_Server implements TCP_SERVER {
 
         }
     }
-
-
 }
+
