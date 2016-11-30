@@ -1,4 +1,4 @@
-#Wed Nov 30 16:02:31 CET 2016
+#Wed Nov 30 16:12:44 CET 2016
 base.0=/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_345d1a10d5db841a1c0449614dee35252dc795b7
 renamed.1=classes.dex
 renamed.0=classes2.dex
