@@ -1,10 +1,13 @@
 package group_project.test001;
 
+/**
+ * Created by andre_eggli on 10/10/16.
+ * Source: http://stackoverflow.com/questions/29991116/serversocket-accept-doesnt-works-in-second-time
+ * Source: http://stackoverflow.com/questions/1212386/concurrent-and-blocking-queue-in-java
+ */
+
 import android.util.Log;
-
-
 import org.apache.commons.io.IOUtils;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,16 +15,9 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-
-/**
- * Created by andre_eggli on 10/1/16.
- * Source: http://stackoverflow.com/questions/29991116/serversocket-accept-doesnt-works-in-second-time
- * Source: http://stackoverflow.com/questions/1212386/concurrent-and-blocking-queue-in-java
- */
+import java.net.SocketException;
 
 public class TCPServer implements TCP_SERVER {
-    public int get_Progress() { return 0;}
 
     private Thread serverThread = null;
     private WifiDataBuffer wifiDataBuffer;
@@ -30,21 +26,23 @@ public class TCPServer implements TCP_SERVER {
     OutputStream outputStream;
     InputStream inputStream;
 
-
     public TCPServer(final WifiDataBuffer wifiDataBuffer) throws IllegalStateException {
         Log.d("TCPServer","Constructor of TCPServer called");
         this.wifiDataBuffer = wifiDataBuffer;
 
         Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+            // only for Debuffing as Exceptions can occur after this Consturctor is finished (but Thread still runns)
             public void uncaughtException(Thread th, Throwable ex) {
                 Log.d("TCPServer","UncaughtExceptionHandler rethrows IllegalStateException "+ex.getMessage());
-                wifiDataBuffer.enque_FromESP(("ESP_ERROR: "+ex.getMessage()).getBytes());
+                ex.printStackTrace();
             }
         };
         Thread t = new Thread() {
             public void run() {
 
+                Boolean ESPLostConnection = false;
                 socket = null;
+
                 try {
                     Log.d("TCPServer", "Initialising a socket on port 8080, now waiting for ReadyPack from ESP...");
                     serverSocket = new ServerSocket(); // <-- create an unbound socket first
@@ -56,7 +54,7 @@ public class TCPServer implements TCP_SERVER {
                     e.printStackTrace();
 
                 }
-                while (!Thread.currentThread().isInterrupted()) { // TODO: Richtige Abbruchbed
+                while (!Thread.currentThread().isInterrupted()) {
                     try {
                         socket = serverSocket.accept();
                         outputStream = socket.getOutputStream();
@@ -65,34 +63,34 @@ public class TCPServer implements TCP_SERVER {
                         e.printStackTrace();
                     }
 
+                    while (!Thread.currentThread().isInterrupted()) {
 
-                    while (!Thread.currentThread().isInterrupted()) { // TODO: Richtige Abbruchbed.
-
-
-                        // TODO: Check if ESP still connected to Socket
 
                         try {
-                            /* // this code would check very many times if socket is still reachable
-                           if(!socket.getInetAddress().isReachable(100)){
-                                throw new IllegalStateException("ESP not in reach");
-                            }*/
-
                             if (wifiDataBuffer.isDataWaiting_ToESP()){ // send Trigger-Pack if one is available
                                 if(socket.getInetAddress().isReachable(100)){ // check if ESP still in reach
                                     byte[] Triggerpackage2Send = wifiDataBuffer.dequeue_ToESP();
                                     if (Triggerpackage2Send.length != 32) {
                                         throw new IllegalArgumentException("All TriggerPacks must have lenght 32!");
                                     }
-                                    outputStream.write(Triggerpackage2Send); // send Trigger-Pack
+                                    try{
+                                        outputStream.write(Triggerpackage2Send); // send Trigger-Pack
+                                    } catch (SocketException exception){
+                                        exception.printStackTrace();
+                                        // Log.d("TCPServer","ESP not reachable anymore");
+                                        SendErrorToActivity(1, "ESP not in reach");
+                                        ESPLostConnection = true;
+                                    }
                                     byte[] HeaderofTrigger = {Triggerpackage2Send[4], Triggerpackage2Send[5], Triggerpackage2Send[6], Triggerpackage2Send[7]};
                                     Log.d("TCPServer","TCPServer did send a TriggerPackage of Type '"+ new String(HeaderofTrigger) +"' to ESP");
                                 }
                                 else { // ESP not reachable
+                                    wifiDataBuffer.dequeue_ToESP();
                                     Log.d("TCPServer","ESP not reachable anymore");
-                                    throw new IllegalStateException("ESP not in reach");
+                                    SendErrorToActivity(1, "ESP not in reach");
+                                    ESPLostConnection = true; // can only be false again if app is manually restarted
                                 }
                             }
-
 
                             if (inputStream.available() >= 8){ // true if receiving Data.
                                 int PackSize; // to be determined by HeaderDetails
@@ -110,6 +108,9 @@ public class TCPServer implements TCP_SERVER {
                                     throw new IllegalArgumentException("Header is not RD16 but: " + headerAndDetails);
                                 }
                                 if (headerAndDetails.endsWith("DRDY")) {
+                                    if (ESPLostConnection) {
+                                        SendErrorToActivity(2, "Connection works again");
+                                    }
                                     PackSize = 32;
                                 }
                                 else if (headerAndDetails.endsWith("CALD")) {
@@ -161,6 +162,7 @@ public class TCPServer implements TCP_SERVER {
                                 }
 
                                 byte[] content = IOUtils.toByteArray(inputStream, PackSize - 8); // read content of Package to corresponing header.
+                                // IOUtils.toByteArray(inputStream, PackSize - 8) freezes until PackSize - 8 Bytes are avialable
                                 String ContentString = new String(content); // Check if Postfix = "PEND"
                                 if(!ContentString.endsWith("PEND")){
                                     throw new IllegalStateException("Packge doesnt end with PEND, but is: " + ContentString);
@@ -200,8 +202,25 @@ public class TCPServer implements TCP_SERVER {
                 }
             }
         };
-        t.setUncaughtExceptionHandler(h);
+        t.setUncaughtExceptionHandler(h); // Because exceptions from Service are not passed to activity -> use 'SendErrorToAvtivity'
         t.start();
     }  // end Constructor
 
+
+
+    public void SendErrorToActivity (Integer Code, String Message){
+        ByteArrayOutputStream errorbuffer = new ByteArrayOutputStream(134);
+        try {
+            errorbuffer.write("RD16EROR".getBytes());
+            errorbuffer.write(new byte[]{0, Code.byteValue()});
+            errorbuffer.write(Message.getBytes());
+            for (int i = 0; i < 120-Message.length(); ++i){
+                errorbuffer.write(((Integer) 0).byteValue());
+            }
+            errorbuffer.write("PEND".getBytes());
+            wifiDataBuffer.enque_FromESP(errorbuffer.toByteArray());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

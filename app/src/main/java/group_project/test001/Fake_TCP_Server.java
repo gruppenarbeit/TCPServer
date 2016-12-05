@@ -1,40 +1,28 @@
 package group_project.test001;
 
-
 /**
- * Created by andre_eggli on 11/14/16.
+ * Created by andre_eggli
  */
 
-
 import android.util.Log;
-import java.io.BufferedReader;
+
+
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import static java.lang.Math.pow;
 import static java.lang.Thread.sleep;
 
-/**
- * Created by Markus on 11.11.2016.
- */
 
 public class Fake_TCP_Server implements TCP_SERVER {
 
     private WifiDataBuffer wifiDataBuffer;
     private ServerSocket serverSocket;
     private Socket socket;
-    // OutputStream outputStream; // Not used in Facke-TCP-Server
-    // InputStream inputStream; // Not used in Facke-TCP-Server
     final String LOG_TAG = "FAKE-TCPServer";
 
     final byte[] RD16 = "RD16".getBytes();
@@ -47,14 +35,14 @@ public class Fake_TCP_Server implements TCP_SERVER {
     final byte[] PROG = "PROG".getBytes();
 
     final byte[] device_id = int2byteArray(125, 4);
-    byte[] battery_charge = int2byteArray(77, 1); // in Prozent
-    byte[] battery_voltage = int2byteArray(1677, 2); // in mV
+    byte[] battery_charge = int2byteArray(5, 1); // in Percent
+    byte[] battery_voltage = int2byteArray(1280, 2); // in mV
     int seq_nbr = 1;
 
     final byte[] anzahl_tabellen= {8};
     final byte[] freqs_N = int2byteArray(100, 2);
     final byte[] levels_M = int2byteArray(16, 2);
-    byte[] current_Pack = null; // it is null if no unprocessed TriggerPackages are around.
+    byte[] current_Pack = null; // it is null if no unprocessed TriggerPackages are to be processed.
     byte[] frequencies = reserviert(2, 0);
     byte[] LNA = {0};
     byte[] MODE = "P".getBytes(); // Peak, RMS, All
@@ -180,7 +168,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
                                         DataFromESP.write(anzahl_tabellen);
                                         DataFromESP.write(freqs_N);
                                         DataFromESP.write(levels_M);
-                                        DataFromESP.write(Kalibrationstabelle());
+                                        DataFromESP.write(callibrationTable());
                                         DataFromESP.write(battery_charge);
                                         DataFromESP.write(battery_voltage);
                                         DataFromESP.write("PEND".getBytes());
@@ -333,7 +321,6 @@ public class Fake_TCP_Server implements TCP_SERVER {
                 byteArray[0] = (byte)(Integr >> 8);
                 byteArray[1] = (byte)Integr;
             }
-            // problems with wifiDataBuffer overflow: byteArray = ByteBuffer.allocate(byteArray_length).putInt(Integr).array();
         }
         return byteArray;
     }
@@ -389,7 +376,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
     }
 
     private byte[] reserviert(int repeat, int number) {
-        //fills array with size repeat with zeros
+        //fills array with size 'repeat' with 'number'
         final ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(repeat);
         try {
             byte[] temp = {((Integer) number).byteValue()};
@@ -408,7 +395,6 @@ public class Fake_TCP_Server implements TCP_SERVER {
         byte[] zeros = int2byteArray(0, 4);
 
         String messgrösse_tostring = new String(MODE);
-//        Log.d(LOG_TAG, "measure() -ment started at frequency = " + freqency + ", and MODE = " + messgrösse_tostring + ", and LNA = " + byteArray2int(LNA));
         try{
 
             int[] meas_data_R;
@@ -446,9 +432,9 @@ public class Fake_TCP_Server implements TCP_SERVER {
                     {k = i;}
                 }
                 if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
-                lowerbound= meas_data_P[(17*k)+1];
-                upperbound= meas_data_P[(17*k)+16];
-                // Log.d(LOG_TAG, "measure() lowerbound = " + lowerbound + ", upperbound = "+ upperbound);
+                // von André: measure also Data over maxValue
+                lowerbound = meas_data_P[(17*k)+1]; // Richtig: [(17*k)+8]
+                upperbound = (12/10* meas_data_P[(17*k)+16]); // richtig: ohne 12*.../10
                 if (upperbound - lowerbound <= 0)
                 {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 1");}
                 meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
@@ -480,12 +466,12 @@ public class Fake_TCP_Server implements TCP_SERVER {
                     if (freqency == meas_data_R[i*17])
                     {k = i;}
                 }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
-                lowerbound= meas_data_R[(17*k)+1];
-                upperbound= meas_data_R[(17*k)+16];
-                // Log.d(LOG_TAG, "measure() lowerbound = " + lowerbound + ", upperbound = "+ upperbound);
+                if (k==0){throw new IllegalStateException("k is wrong, error in measure() at freq: " + freqency + "MHz");}
+                // von André: to test: measure smaler than lower bound, but not to high (as it is RMS)
+                lowerbound= meas_data_R[(17*k)+1]; // Correct is [(17*k)+1];
+                upperbound= meas_data_R[(17*k)+10]; // Correct is [(17*k)+16]
                 if (upperbound - lowerbound <= 0)
-                {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 2");}
+                {throw new IllegalArgumentException("lowerbound - upperbound bigger not than zero: at 2");}
                 meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
                 result.write(int2byteArray(meas, 4));
                 result.write(zeros);
@@ -520,13 +506,13 @@ public class Fake_TCP_Server implements TCP_SERVER {
                     if (freqency == meas_data_R[i*17])
                     {k = i;}
                 }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure");}
-                lowerbound= meas_data_R[(17*k)+1];
-                upperbound= meas_data_R[(17*k)+16];
-                // Log.d(LOG_TAG, "measure() lowerbound = " + lowerbound + ", upperbound = "+ upperbound);
+                if (k==0){throw new IllegalStateException("k is wrong, error while measure() at freq: " + freqency + "MHz");}
+                // if one measures RMS and Peak together, RMS value is always smaler than Peak
+                lowerbound= meas_data_R[(17*k)+1]; // Correct for full range: meas_data_R[(17*k)+1]
+                upperbound= meas_data_R[(17*k)+8]; // Correct for full range: meas_data_R[(17*k)+16]
                 if (upperbound - lowerbound <= 0)
                 {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 3");}
-                meas = rand.nextInt(upperbound - lowerbound) + lowerbound;
+                meas = (int) (rand.nextInt(upperbound - lowerbound) + lowerbound);
                 result.write(int2byteArray(meas, 4));
                 //Peak
                 k=0;
@@ -535,8 +521,8 @@ public class Fake_TCP_Server implements TCP_SERVER {
                     if (freqency == meas_data_P[i*17])
                     {k = i;}
                 }
-                if (k==0){throw new IllegalStateException("k is wrong, error in measure, change freq");}
-                lowerbound= meas_data_P[(17*k)+1];
+                if (k==0){throw new IllegalStateException("k is wrong, error while measure() at freq: " + freqency);}
+                lowerbound= meas_data_P[(17*k)+7]; // Correct for full Range:  meas_data_P[(17*k)+1]
                 upperbound= meas_data_P[(17*k)+16];
                 if (upperbound - lowerbound <= 0)
                 {throw new IllegalArgumentException("lowerbound - upperbound bigger than zero: at 4");}
@@ -554,7 +540,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
         return result.toByteArray();
     }
 
-    private byte[] Kalibrationstabelle()
+    private byte[] callibrationTable()
     {
         ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream();
         String p = "P";
@@ -563,7 +549,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
         {
             byte[] LNA_Settings = {(byte) i};
             try {
-                inStreamBuffer.write(tabelle(Messgrösse_p, LNA_Settings, p, i)); //returns tabelle-array with 6666 bytes
+                inStreamBuffer.write(tabula(Messgrösse_p, LNA_Settings, p, i)); //returns tabula-array with 6666 bytes
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -574,7 +560,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
         {
             byte[] Einstellungen = {(byte) i};
             try {
-                inStreamBuffer.write(tabelle(Messgrösse_r, Einstellungen, r, i)); //returns tabelle-array with 6666 bytes
+                inStreamBuffer.write(tabula(Messgrösse_r, Einstellungen, r, i)); //returns tabula-array with 6666 bytes
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -583,8 +569,7 @@ public class Fake_TCP_Server implements TCP_SERVER {
     }
 
 
-    private byte[] tabelle(byte[] Peak_RMS_All, byte[] LNA_Settings, String Peak_RMS, int LNA)
-
+    private byte[] tabula(byte[] Peak_RMS_All, byte[] LNA_Settings, String Peak_RMS, int LNA)
     {
         ByteArrayOutputStream inStreamBuffer = new ByteArrayOutputStream(6666);
 
@@ -685,6 +670,4 @@ public class Fake_TCP_Server implements TCP_SERVER {
 
         }
     }
-
-
 }

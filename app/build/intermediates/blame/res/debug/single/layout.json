@@ -160,12 +160,12 @@
         "source": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_action_mode_bar.xml"
     },
     {
-        "merged": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/src/main/res/layout/activity_main.xml"
-    },
-    {
         "merged": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
         "source": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/layout/abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
+        "source": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/src/main/res/layout/activity_main.xml"
     },
     {
         "merged": "/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
