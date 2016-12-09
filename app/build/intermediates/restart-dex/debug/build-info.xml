@@ -4,43 +4,29 @@
     density="xxhdpi"
     format="8"
     plugin-version="2.2.0"
-    timestamp="2236771860751"
+    timestamp="11190811313683"
     token="6923925086317579339"
-    verifier="STATIC_INITIALIZER_CHANGE" >
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="561" />
+        duration="792" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="27" />
+        duration="137" />
     <task
         name="verifier"
-        duration="4" />
+        duration="55" />
 
     <artifact
-        location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
-        type="DEX" />
+        location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/outputs/apk/app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="2150293907166"
-        verifier="FULL_BUILD_REQUESTED" >
-        <artifact
-            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/outputs/apk/app-debug.apk"
-            type="MAIN" />
-    </build>
-    <build
-        timestamp="2236771860751"
-        verifier="STATIC_INITIALIZER_CHANGE" >
-        <artifact
-            location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_6/classes.dex"
-            type="DEX" />
-    </build>
-    <build
-        timestamp="5654850536422"
+        timestamp="11190811313683"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/outputs/apk/app-debug.apk"

@@ -5,5 +5,5 @@ package group_project.test001;
  */
 
 public interface TCP_SERVER {
-
+    void forceStop();
 }

@@ -39,7 +39,7 @@ public class CommunicationService extends Service {
     static final WifiDataBuffer wifiDataBuffer = new WifiDataBuffer();
     TCP_Data_dequeue_Thread dataSenderThread = new TCP_Data_dequeue_Thread();
 
-    // final static TCP_SERVER Socket = new Fake_TCP_Server(wifiDataBuffer); // Initialise Fake TCP to test
+    //final static TCP_SERVER Socket = new Fake_TCP_Server(wifiDataBuffer); // Initialise Fake TCP to test
     final static TCP_SERVER Socket = new TCPServer(wifiDataBuffer); // Initialise real TCP_Server to test ESP8266
     // final static TCP_SERVER Socket = new Excel_Facke_TCP_Server(wifiDataBuffer);
 
@@ -71,7 +71,7 @@ public class CommunicationService extends Service {
     @Override
     public void onCreate() {
         wifi_manager = (WifiManager) this.getSystemService(this.WIFI_SERVICE);
-        WifiConfiguration wifi_configuration = null;
+        WifiConfiguration wifi_configuration;
         if(wifi_manager.getWifiState() == 2 || wifi_manager.getWifiState() == 3) {// Enum Constantes for Wifi_enabling and Wifi_enabled
             WifiWasOnWhenServiceWasStarted = true;
             Log.d(LOG_TAG,"Wifi was turned on @ OnCreate");
@@ -79,6 +79,19 @@ public class CommunicationService extends Service {
         else {
             WifiWasOnWhenServiceWasStarted = false; Log.d(LOG_TAG, "Wifi was turned off @ OnCreate");}
         Log.d(LOG_TAG, "onCreate");
+
+        wifi_manager = (WifiManager) this.getSystemService(this.WIFI_SERVICE);
+        wifi_configuration = null;
+        wifi_manager.setWifiEnabled(false); // Turn Wifi off, before turning Hotspot on.
+        try {
+            // Source http://stackoverflow.com/questions/13946607/android-how-to-turn-on-hotspot-in-android-programmatically
+            Method method = wifi_manager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
+            method.invoke(wifi_manager, wifi_configuration, true);
+            Log.d(LOG_TAG,"in onStartCommand, turned Hotspot on");
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
 
         ListenerForActivity = new IntentListenerForActivity();
 
@@ -102,6 +115,7 @@ public class CommunicationService extends Service {
     public void onDestroy() {
         Log.d(LOG_TAG, "onDestroy called");
         running = false;
+        Socket.forceStop();
         // turn Hotspot off.
         try {
             Method method = wifi_manager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
