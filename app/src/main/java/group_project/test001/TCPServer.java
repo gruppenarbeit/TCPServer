@@ -29,6 +29,7 @@ public class TCPServer implements TCP_SERVER {
     Boolean ESPLostConnection = false;
 
     public synchronized void  forceStop() {
+        Log.d("TCPServer","on forceStop()");
         this.ESPLostConnection = true;
     }
 

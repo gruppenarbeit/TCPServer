@@ -120,21 +120,21 @@
     </item>
     <item
         is-multidex="true"
+        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="54915810f15d6492b897f7c6a3cbbbaef062a0b2">
+        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b33099c1ac935bbe233a272a871c6b8faf502a73/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
         <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_b263da40db049107e1051ba5f535fe63570b9c48/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="3ae4834f6fa7c061d19424e3b1f8f4b86e5dc352">
-        <dex dex="/home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_b33099c1ac935bbe233a272a871c6b8faf502a73/classes.dex" />
     </item>
     <item
         is-multidex="false"

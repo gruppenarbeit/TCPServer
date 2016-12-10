@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     TextView SocketText;
     final String LOG_TAG = "MainActivity";
     WifiDataBuffer wifiDataBuffer = new WifiDataBuffer();
-    MyActivityReceiver myActivityReceiver = new MyActivityReceiver(LOG_TAG, wifiDataBuffer);
+    BroadcastActivityReceiver broadcastActivityReceiver = new BroadcastActivityReceiver(LOG_TAG, wifiDataBuffer);
 
 
     @Override
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(CommunicationService.TRIGGER_Serv2Act);
-        registerReceiver(myActivityReceiver, intentFilter);
+        registerReceiver(broadcastActivityReceiver, intentFilter);
 
         StartService();
 
@@ -122,21 +122,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onDestroy() {
+        Log.d(LOG_TAG, "onDestroy()");
+        if (this.isFinishing()) {
+            StopService(); // turn Wifi Back on.
+        }
+        super.onDestroy();
+    }
+
+    @Override
     public void onStop() {
         Log.d(LOG_TAG,"OnStop");
 
-        unregisterReceiver(myActivityReceiver);
+        unregisterReceiver(broadcastActivityReceiver);
 
-        super.onStop();// ATTENTION: This was auto-generated to implement the App Indexing API.
+        super.onStop();
     }
 
     private void StopService() {
         Log.d(LOG_TAG, "StopService called");
-        Intent intent = new Intent();
-        intent.setAction(CommunicationService.ACTION_FROM_ACTIVITY);
-        intent.putExtra(CommunicationService.COMMAND_Act2Serv, CommunicationService.CMD_STOP);
-        sendBroadcast(intent);
+        Intent i = new Intent(this, CommunicationService.class);
+        stopService(i);
+
+//        Intent intent = new Intent();
+//        intent.setAction(CommunicationService.ACTION_FROM_ACTIVITY);
+//        intent.putExtra(CommunicationService.COMMAND_Act2Serv,
+//                CommunicationService.CMD_STOP);
     }
+
     private void StartService() {
         Intent intent = new Intent(this, CommunicationService.class);
         startService(intent);

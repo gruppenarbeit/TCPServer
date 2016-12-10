@@ -83,7 +83,7 @@ ADDED from /home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/
 	android:exported
 		ADDED from /home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/src/main/AndroidManifest.xml:39:13-36
 	android:stopWithTask
-		ADDED from /home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/src/main/AndroidManifest.xml:40:13-40
+		ADDED from /home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/src/main/AndroidManifest.xml:40:13-41
 	android:name
 		ADDED from /home/andre_eggli/AndroidStudioProjects/AppMarkusAndre/TCPServer/app/src/main/AndroidManifest.xml:38:13-49
 uses-sdk

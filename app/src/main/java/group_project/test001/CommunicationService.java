@@ -39,7 +39,7 @@ public class CommunicationService extends Service {
     static final WifiDataBuffer wifiDataBuffer = new WifiDataBuffer();
     TCP_Data_dequeue_Thread dataSenderThread = new TCP_Data_dequeue_Thread();
 
-    //final static TCP_SERVER Socket = new Fake_TCP_Server(wifiDataBuffer); // Initialise Fake TCP to test
+    // final static TCP_SERVER Socket = new Fake_TCP_Server(wifiDataBuffer); // Initialise Fake TCP to test
     final static TCP_SERVER Socket = new TCPServer(wifiDataBuffer); // Initialise real TCP_Server to test ESP8266
     // final static TCP_SERVER Socket = new Excel_Facke_TCP_Server(wifiDataBuffer);
 

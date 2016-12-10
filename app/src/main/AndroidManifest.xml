@@ -37,7 +37,7 @@
         <service
             android:name=".CommunicationService"
             android:exported="true"
-            android:stopWithTask="true"
+            android:stopWithTask="false"
             >
         </service>
     </application>
